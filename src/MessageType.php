@@ -1,6 +1,6 @@
 <?php
 /**
- * Relations Messenger Message Standard
+ * Relations Messenger API Message Standard
  *
  * @link      https://gitlab.com/relmsg/message
  * @copyright Copyright (c) 2018-2019 Relations Messenger

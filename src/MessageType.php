@@ -11,13 +11,16 @@
 
 namespace RM\API\Message;
 
+use ReflectionClass;
+use ReflectionException;
+
 /**
  * Enum MessageType
  *
  * @package RM\API\Message
  * @author  h1karo <h1karo@outlook.com>
  */
-interface MessageType
+class MessageType
 {
     /**
      * Main message type. Means the requirement to perform some action. For example, get the user for the `users.get` action.
@@ -56,4 +59,32 @@ interface MessageType
      * @see Comment
      */
     const COMMENT = 'comment';
+    
+    /**
+     * Checks if this type of message exists
+     *
+     * @param string $type guess message type
+     *
+     * @return bool
+     */
+    public static function exists(string $type): bool
+    {
+        $type = mb_strtoupper($type);
+        return array_search($type, self::all()) !== false;
+    }
+    
+    /**
+     * Returns list of all message types
+     *
+     * @return array
+     */
+    public static function all(): array
+    {
+        try {
+            $reflect = new ReflectionClass(get_called_class());
+            return array_keys($reflect->getConstants());
+        } catch (ReflectionException $e) {
+            return [];
+        }
+    }
 }

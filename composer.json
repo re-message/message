@@ -1,6 +1,6 @@
 {
     "name": "relmsg/message",
-    "description": "A Relations Messenger API standard",
+    "description": "A Relations Messenger API Message Standard",
     "type": "library",
     "license": "Apache License 2.0",
     "homepage": "https://dev.relmsg.ru/message",
@@ -14,8 +14,6 @@
     ],
     "require": {
         "php": "^7.3",
-        "psr/log": "^1.1",
-        "symfony/yaml": "^4.3",
         "symfony/validator": "^4.3",
         "webmozart/json": "^1.2"
     },

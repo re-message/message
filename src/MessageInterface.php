@@ -11,8 +11,6 @@
 
 namespace RM\API\Message;
 
-use Symfony\Component\Validator\ConstraintViolationListInterface;
-
 /**
  * Class Message
  *
@@ -30,17 +28,19 @@ interface MessageInterface
     public function getType(): string;
     
     /**
-     * Content of the message
+     * Converts the message in simple array for encoding to others formats.
      *
-     * @return string|int|array
+     * @return array
      */
-    public function getContent();
+    public function serialize(): array;
     
     /**
-     * Returns list of violations. If the list is empty validate succeeded.
+     * Create a new message instance from array. Uses by {@see MessageDecoder}
      *
-     * @return ConstraintViolationListInterface
-     * @see ValidatorInterface::validate()
+     * @param array $message
+     *
+     * @return static|null
+     * @see MessageDecoder::decode()
      */
-    public function validate(): ConstraintViolationListInterface;
+    public static function unserialize(array $message);
 }

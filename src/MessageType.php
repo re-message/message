@@ -37,6 +37,13 @@ class MessageType
      */
     const RESPONSE = 'response';
     /**
+     * Subscribe on some event. Without this server will not send event messages.
+     * Sent only by client.
+     *
+     * @see Subscription
+     */
+    const SUBSCRIPTION = 'subscription';
+    /**
      * Means that a certain event has occurred on the server that the client MAY process.
      * The client cannot send this type of message. They will be ignored by the server.
      * Only works for socket connection.

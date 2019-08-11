@@ -28,9 +28,10 @@ interface MessageInterface
     public function getType(): string;
     
     /**
-     * Converts the message in simple array for encoding to others formats.
+     * Converts the message in simple array for encoding to others formats.  Uses by {@see MessageEncoder}
      *
      * @return array
+     * @see MessageEncoder::encode()
      */
     public function serialize(): array;
     

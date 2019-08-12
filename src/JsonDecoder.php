@@ -23,9 +23,10 @@ use Webmozart\Json\ValidationFailedException;
 class JsonDecoder extends MessageDecoder
 {
     protected $registry = [
-        MessageType::ACTION => Action::class
+        MessageType::ACTION   => Action::class,
+        MessageType::RESPONSE => Response::class
     ];
-    
+
     /**
      * {@inheritDoc}
      */

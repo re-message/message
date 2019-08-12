@@ -26,7 +26,7 @@ interface MessageInterface
      * @see MessageType
      */
     public function getType(): string;
-    
+
     /**
      * Converts the message in simple array for encoding to others formats.  Uses by {@see MessageEncoder}
      *
@@ -34,7 +34,7 @@ interface MessageInterface
      * @see MessageEncoder::encode()
      */
     public function serialize(): array;
-    
+
     /**
      * Create a new message instance from array. Uses by {@see MessageDecoder}
      *

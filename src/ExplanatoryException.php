@@ -34,7 +34,7 @@ class ExplanatoryException extends Exception
      * @var string
      */
     private $link;
-    
+
     /**
      * ExplanatoryException constructor.
      *
@@ -51,7 +51,7 @@ class ExplanatoryException extends Exception
         $this->solution = $solution;
         $this->link = $link;
     }
-    
+
     /**
      * @return mixed
      */
@@ -59,7 +59,7 @@ class ExplanatoryException extends Exception
     {
         return $this->reason;
     }
-    
+
     /**
      * @return string|null
      */
@@ -67,7 +67,7 @@ class ExplanatoryException extends Exception
     {
         return $this->solution;
     }
-    
+
     /**
      * @return string|null
      */
@@ -75,7 +75,7 @@ class ExplanatoryException extends Exception
     {
         return $this->link;
     }
-    
+
     /**
      * @param LoggerInterface $logger
      * @param mixed           $level

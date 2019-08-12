@@ -23,7 +23,7 @@ abstract class MessageEncoder
      * @var array list of supported message types
      */
     protected $registry = [];
-    
+
     /**
      * @param MessageInterface $message
      *
@@ -35,7 +35,7 @@ abstract class MessageEncoder
         if (!array_key_exists($message->getType(), $this->registry)) {
             throw new ExplanatoryException("Messages of this type are not supported.", $message);
         }
-        
+
         $serialized = $message->serialize();
         if (null !== $parsed = $this->parse($serialized)) {
             return $parsed;
@@ -43,7 +43,7 @@ abstract class MessageEncoder
             throw new ExplanatoryException("Unable to parse the message.", $serialized);
         }
     }
-    
+
     /**
      * Parses the array of type and content of message to string.
      * If unable to parse the message, returns null.

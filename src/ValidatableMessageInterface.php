@@ -23,7 +23,7 @@ interface ValidatableMessageInterface extends MessageInterface
      * @see ValidatorInterface::validate()
      */
     public function validateAll(): ConstraintViolationListInterface;
-    
+
     /**
      * Checks the  value for compliance with parameter constraints.
      * Returns list of violations. If the list is empty validate succeeded.
@@ -35,7 +35,7 @@ interface ValidatableMessageInterface extends MessageInterface
      * @see ValidatorInterface::validate()
      */
     public function validateValue(string $parameter, $value): ConstraintViolationListInterface;
-    
+
     /**
      * Checks the current parameter value for compliance with him constraints.
      * Returns list of violations. If the list is empty validate succeeded.

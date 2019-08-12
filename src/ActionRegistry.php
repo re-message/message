@@ -23,7 +23,7 @@ final class ActionRegistry
      * @var array list of registered actions in format name => class.
      */
     private static $actions = [];
-    
+
     /**
      * @param string $key
      * @param mixed  $value
@@ -34,7 +34,7 @@ final class ActionRegistry
     {
         self::$actions[$key] = $value;
     }
-    
+
     /**
      * @param string $key
      *

@@ -66,7 +66,7 @@ class MessageType
      * @see Comment
      */
     const COMMENT = 'comment';
-    
+
     /**
      * Checks if this type of message exists
      *
@@ -79,7 +79,7 @@ class MessageType
         $type = mb_strtoupper($type);
         return array_search($type, self::all()) !== false;
     }
-    
+
     /**
      * Returns list of all message types
      *

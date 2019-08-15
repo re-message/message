@@ -11,7 +11,8 @@
 
 namespace RM\API\Message;
 
-use Webmozart\Json\JsonDecoder as JsonHelper;
+use Webmozart\Json\JsonDecoder;
+use Webmozart\Json\JsonEncoder;
 use Webmozart\Json\ValidationFailedException;
 
 /**
@@ -20,7 +21,7 @@ use Webmozart\Json\ValidationFailedException;
  * @package RM\API\Message
  * @author  h1karo <h1karo@outlook.com>
  */
-class JsonDecoder extends MessageDecoder
+class JsonFormatter extends MessageFormatter
 {
     protected $registry = [
         MessageType::ACTION   => Action::class,
@@ -30,10 +31,23 @@ class JsonDecoder extends MessageDecoder
     /**
      * {@inheritDoc}
      */
-    protected function parse(string $message): ?array
+    protected function implode(array $message): ?string
     {
         try {
-            $decoder = new JsonHelper();
+            $encoder = new JsonEncoder;
+            return $encoder->encode($message);
+        } catch (ValidationFailedException $e) {
+            return null;
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function explode(string $message): ?array
+    {
+        try {
+            $decoder = new JsonDecoder;
             return $decoder->decode($message);
         } catch (ValidationFailedException $e) {
             return null;

@@ -36,12 +36,12 @@ interface MessageInterface
     public function serialize(): array;
 
     /**
-     * Create a new message instance from array. Uses by {@see MessageDecoder}
+     * Create a new message instance from array. Uses by {@see MessageFormatter}
      *
      * @param array $message
      *
      * @return static|null
-     * @see MessageDecoder::decode()
+     * @see MessageFormatter::decode()
      */
     public static function unserialize(array $message);
 }

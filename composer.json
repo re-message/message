@@ -6,14 +6,14 @@
     "homepage": "https://dev.relmsg.ru/message",
     "authors": [
         {
-            "name": "h1karo",
+            "name": "Oleg Kozlov",
             "email": "h1karo@relmsg.ru",
             "homepage": "https://relmsg.ru/h1karo",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.2",
         "symfony/validator": "^4.3",
         "webmozart/json": "^1.2"
     },

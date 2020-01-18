@@ -19,12 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "RM\\API\\Message\\": "src/"
+            "RM\\Standards\\Message\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RM\\API\\Message\\Tests\\": "tests/"
+            "RM\\Standards\\Message\\Tests\\": "tests/"
         }
     },
     "require-dev": {

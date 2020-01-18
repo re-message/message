@@ -9,12 +9,12 @@
  * @license   https://legal.relmsg.ru/licenses/message
  */
 
-namespace RM\API\Message;
+namespace RM\Standards\Message;
 
 /**
  * Class ActionRegistry
  *
- * @package RM\API\Message
+ * @package RM\Standards\Message
  * @author  h1karo <h1karo@outlook.com>
  */
 final class ActionRegistry

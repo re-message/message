@@ -9,12 +9,12 @@
  * @license   https://legal.relmsg.ru/licenses/message
  */
 
-namespace RM\API\Message;
+namespace RM\Standards\Message;
 
 /**
  * Class Response
  *
- * @package RM\API\Message
+ * @package RM\Standards\Message
  * @author  h1karo <h1karo@outlook.com>
  */
 class Response implements MessageInterface

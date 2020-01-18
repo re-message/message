@@ -9,7 +9,7 @@
  * @license   https://legal.relmsg.ru/licenses/message
  */
 
-namespace RM\API\Message;
+namespace RM\Standards\Message;
 
 use Psr\Log\LoggerInterface;
 use Throwable;
@@ -17,7 +17,7 @@ use Throwable;
 /**
  * Class ExplanatoryException
  *
- * @package RM\API\Message
+ * @package RM\Standards\Message
  * @author  h1karo <h1karo@outlook.com>
  */
 class ExplanatoryException extends Exception

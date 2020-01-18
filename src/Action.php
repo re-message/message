@@ -9,7 +9,7 @@
  * @license   https://legal.relmsg.ru/licenses/message
  */
 
-namespace RM\API\Message;
+namespace RM\Standards\Message;
 
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 /**
  * Basic action class
  *
- * @package RM\API\Message
+ * @package RM\Standards\Message
  * @author  h1karo <h1karo@outlook.com>
  * @see     MessageType::ACTION
  */

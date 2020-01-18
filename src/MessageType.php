@@ -9,7 +9,7 @@
  * @license   https://legal.relmsg.ru/licenses/message
  */
 
-namespace RM\API\Message;
+namespace RM\Standards\Message;
 
 use ReflectionClass;
 use ReflectionException;
@@ -17,7 +17,7 @@ use ReflectionException;
 /**
  * Enum MessageType
  *
- * @package RM\API\Message
+ * @package RM\Standards\Message
  * @author  h1karo <h1karo@outlook.com>
  */
 class MessageType

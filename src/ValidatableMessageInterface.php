@@ -14,7 +14,7 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standards\Message;
+namespace RM\Standard\Message;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 

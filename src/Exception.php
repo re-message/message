@@ -14,14 +14,14 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standards\Message;
+namespace RM\Standard\Message;
 
 use Throwable;
 
 /**
  * Class Exception
  *
- * @package RM\Standards\Message
+ * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
  */
 class Exception extends \Exception

@@ -14,12 +14,12 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standards\Message;
+namespace RM\Standard\Message;
 
 /**
  * Class Message
  *
- * @package RM\Standards\Message
+ * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
  */
 interface MessageInterface

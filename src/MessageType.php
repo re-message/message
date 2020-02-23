@@ -14,7 +14,7 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standards\Message;
+namespace RM\Standard\Message;
 
 use ReflectionClass;
 use ReflectionException;
@@ -22,7 +22,7 @@ use ReflectionException;
 /**
  * Enum MessageType
  *
- * @package RM\Standards\Message
+ * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
  */
 class MessageType

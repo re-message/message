@@ -14,7 +14,7 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standards\Message;
+namespace RM\Standard\Message;
 
 use Webmozart\Json\JsonDecoder;
 use Webmozart\Json\JsonEncoder;
@@ -23,7 +23,7 @@ use Webmozart\Json\ValidationFailedException;
 /**
  * Class JsonMessageDecoder
  *
- * @package RM\Standards\Message
+ * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
  */
 class JsonFormatter extends MessageFormatter

@@ -14,7 +14,7 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standards\Message;
+namespace RM\Standard\Message;
 
 use Psr\Log\LoggerInterface;
 use Throwable;
@@ -22,7 +22,7 @@ use Throwable;
 /**
  * Class ExplanatoryException
  *
- * @package RM\Standards\Message
+ * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
  */
 class ExplanatoryException extends Exception

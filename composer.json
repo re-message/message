@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "symfony/validator": "^4.4.2",
+        "symfony/validator": "^4.4.2|^5.0",
         "webmozart/json": "^1.2.2"
     },
     "autoload": {

@@ -28,7 +28,8 @@ use ReflectionException;
 class MessageType
 {
     /**
-     * Main message type. Means the requirement to perform some action. For example, get the user for the `users.get` action.
+     * Main message type. Means the requirement to perform some action.
+     * For example, get the user for the `users.get` action.
      * Sent only by client.
      *
      * @see Action

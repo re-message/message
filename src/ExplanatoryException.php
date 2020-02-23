@@ -28,71 +28,66 @@ use Throwable;
 class ExplanatoryException extends Exception
 {
     /**
+     * A reason of exception, some data.
+     *
      * @var mixed
      */
     private $reason;
-    /**
-     * @var string
-     */
-    private $solution;
-    /**
-     * @var string
-     */
-    private $link;
 
     /**
-     * ExplanatoryException constructor.
+     * A probably solution of this problem.
      *
-     * @param string         $message  is a basic exception message
-     * @param mixed          $reason   is a reason of exception, some data
-     * @param string         $solution a probably solution of this problem
-     * @param string         $link     a link to solution and/or explanation
-     * @param Throwable|null $previous
+     * @var string
      */
-    public function __construct(string $message, $reason, string $solution = null, string $link = null, Throwable $previous = null)
-    {
+    private string $solution;
+
+    /**
+     * A link to solution and/or explanation.
+     *
+     * @var string
+     */
+    private string $link;
+
+    public function __construct(
+        string $message,
+        $reason,
+        string $solution = null,
+        string $link = null,
+        Throwable $previous = null
+    ) {
         parent::__construct($message, $previous);
         $this->reason = $reason;
         $this->solution = $solution;
         $this->link = $link;
     }
 
-    /**
-     * @return mixed
-     */
     public function getReason()
     {
         return $this->reason;
     }
 
-    /**
-     * @return string|null
-     */
     public function getSolution(): ?string
     {
         return $this->solution;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLink(): ?string
     {
         return $this->link;
     }
 
-    /**
-     * @param LoggerInterface $logger
-     * @param mixed           $level
-     */
     public function log(LoggerInterface $logger, $level)
     {
-        $logger->log($level, $this->getMessage(), [
-            'reason'   => serialize($this->getReason()),
-            'solution' => $this->getSolution() ?? 'none',
-            'link'     => $this->getLink() ?? 'none',
-            'file'     => $this->getFile(),
-            'line'     => $this->getLine()
-        ]);
+        $logger->log(
+            $level,
+            $this->getMessage(),
+            [
+                'reason' => serialize($this->getReason()),
+                'solution' => $this->getSolution() ?? 'none',
+                'link' => $this->getLink() ?? 'none',
+                'file' => $this->getFile(),
+                'line' => $this->getLine()
+            ]
+        );
     }
 }

@@ -25,26 +25,17 @@ namespace RM\Standard\Message;
 final class ActionRegistry
 {
     /**
-     * @var array list of registered actions in format name => class.
-     */
-    private static $actions = [];
-
-    /**
-     * @param string $key
-     * @param mixed  $value
+     * The list of registered actions in format name => class.
      *
-     * @return void
+     * @var array
      */
+    private static array $actions = [];
+
     public static function set(string $key, $value): void
     {
         self::$actions[$key] = $value;
     }
 
-    /**
-     * @param string $key
-     *
-     * @return string|null
-     */
     public static function get(string $key): ?string
     {
         return self::$actions[$key] ?? null;

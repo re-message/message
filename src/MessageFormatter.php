@@ -25,18 +25,23 @@ namespace RM\Standard\Message;
 abstract class MessageFormatter
 {
     /**
-     * @var string default message type if unable to define the message type
+     * The default message type if unable to define the message type
+     *
+     * @var string
      */
-    protected static $defaultType = MessageType::ACTION;
+    protected static string $defaultType = MessageType::ACTION;
 
     /**
-     * @var array list of supported message types
+     * The list of supported message types
+     *
+     * @var array
      */
-    protected $registry = [];
+    protected array $registry = [];
+
     /**
      * @var MessageHandler[]
      */
-    private $handlers = [];
+    private array $handlers = [];
 
     /**
      * @param MessageInterface $message
@@ -110,9 +115,6 @@ abstract class MessageFormatter
         return $unserialize;
     }
 
-    /**
-     * @param MessageHandler $handler
-     */
     final public function putHandler(MessageHandler $handler): void
     {
         $this->handlers[] = $handler;
@@ -130,7 +132,8 @@ abstract class MessageFormatter
 
     /**
      * Parses string message in array. If unable to parse the message, returns null.
-     * This method does not check the correctness of the message, but only translates it into a format for further processing.
+     * This method does not check the correctness of the message, but only translates it into a format for further
+     * processing.
      *
      * @param string $message
      *

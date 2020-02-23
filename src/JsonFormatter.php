@@ -28,8 +28,8 @@ use Webmozart\Json\ValidationFailedException;
  */
 class JsonFormatter extends MessageFormatter
 {
-    protected $registry = [
-        MessageType::ACTION   => Action::class,
+    protected array $registry = [
+        MessageType::ACTION => Action::class,
         MessageType::RESPONSE => Response::class
     ];
 

@@ -30,47 +30,35 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 abstract class Action implements ValidatableMessageInterface
 {
-    /**
-     * @var ValidatorInterface|null
-     */
-    private static $validator = null;
+    private static ?ValidatorInterface $validator = null;
 
     /**
-     * @var string unique name of action
+     * Unique name of action.
+     *
+     * @var string
      * @see https://dev.relmsg.ru/api/methods
      */
-    private $name;
-    /**
-     * @var array constraints for action parameters
-     */
-    private $constraints;
-    /**
-     * @var array
-     */
-    private $parameters = [];
+    private string $name;
+    private array $constraints;
+    private array $parameters = [];
 
     /**
      * Action constructor.
      *
-     * @param string $name        unique name of API action
+     * @param string $name unique name of API action
      * @param array  $constraints list of constraints for each action parameter.
      *                            MUST be passed in a child class. No when calling the constructor.
      *
      * @see ValidatorInterface::validate()
      */
-    public function __construct(
-        string $name,
-        array $constraints = []
-    ) {
+    public function __construct(string $name, array $constraints = [])
+    {
         $this->name = $name;
         $this->constraints = $constraints;
 
         $this->register();
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
@@ -102,7 +90,11 @@ abstract class Action implements ValidatableMessageInterface
 
         if (is_object($value) || is_resource($value)) {
             $type = gettype($value);
-            throw new ExplanatoryException("You cannot use this value type ({$type}) to send messages.", $value, 'Serialize your value.');
+            throw new ExplanatoryException(
+                "You cannot use this value type ({$type}) to send messages.",
+                $value,
+                'Serialize your value.'
+            );
         }
 
         $violations = $this->validateValue($parameter, $value);
@@ -174,8 +166,8 @@ abstract class Action implements ValidatableMessageInterface
     final public function serialize(): array
     {
         return [
-            'type'       => $this->getType(),
-            'name'       => $this->name,
+            'type' => $this->getType(),
+            'name' => $this->name,
             'parameters' => $this->parameters
         ];
     }
@@ -185,7 +177,7 @@ abstract class Action implements ValidatableMessageInterface
      *
      * @see ActionRegistry::set()
      */
-    private function register()
+    private function register(): void
     {
         ActionRegistry::set($this->name, self::class);
     }
@@ -197,7 +189,10 @@ abstract class Action implements ValidatableMessageInterface
     final public static function unserialize(array $message)
     {
         if (!array_key_exists('name', $message) || !array_key_exists('parameters', $message)) {
-            throw new ExplanatoryException("Any correct action message must have `name` and `parameters` properties.", $message);
+            throw new ExplanatoryException(
+                "Any correct action message must have `name` and `parameters` properties.",
+                $message
+            );
         }
 
         $name = $message['name'];
@@ -214,11 +209,6 @@ abstract class Action implements ValidatableMessageInterface
         return $action;
     }
 
-    /**
-     * Returns validator for parameters
-     *
-     * @return ValidatorInterface
-     */
     private static function getValidator(): ValidatorInterface
     {
         if (self::$validator === null) {

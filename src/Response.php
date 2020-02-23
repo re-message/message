@@ -24,13 +24,8 @@ namespace RM\Standard\Message;
  */
 class Response implements MessageInterface
 {
-    private $content;
+    private array $content;
 
-    /**
-     * Response constructor.
-     *
-     * @param array $content
-     */
     public function __construct(array $content)
     {
         $this->content = $content;
@@ -50,7 +45,7 @@ class Response implements MessageInterface
     public function serialize(): array
     {
         return [
-            'type'    => $this->getType(),
+            'type' => $this->getType(),
             'content' => $this->content
         ];
     }

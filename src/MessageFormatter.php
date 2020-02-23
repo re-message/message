@@ -41,10 +41,10 @@ abstract class MessageFormatter
     /**
      * @param MessageInterface $message
      *
-     * @return string
+     * @return string|null
      * @throws ExplanatoryException
      */
-    final public function encode(MessageInterface $message): string
+    final public function encode(MessageInterface $message): ?string
     {
         foreach ($this->handlers as $handler) {
             if (!$handler->handlePreEncode($message)) {
@@ -73,10 +73,10 @@ abstract class MessageFormatter
     /**
      * @param string $message
      *
-     * @return MessageInterface
+     * @return MessageInterface|null
      * @throws ExplanatoryException
      */
-    final public function decode(string $message): MessageInterface
+    final public function decode(string $message): ?MessageInterface
     {
         foreach ($this->handlers as $handler) {
             if (!$handler->handlePreDecode($message)) {

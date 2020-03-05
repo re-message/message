@@ -42,7 +42,7 @@ class Response implements MessageInterface
     /**
      * {@inheritDoc}
      */
-    public function serialize(): array
+    public function toArray(): array
     {
         return [
             'type' => $this->getType(),

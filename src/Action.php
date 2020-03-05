@@ -55,8 +55,6 @@ abstract class Action implements ValidatableMessageInterface
     {
         $this->name = $name;
         $this->constraints = $constraints;
-
-        $this->register();
     }
 
     public function getName(): string
@@ -163,50 +161,13 @@ abstract class Action implements ValidatableMessageInterface
     /**
      * {@inheritDoc}
      */
-    final public function serialize(): array
+    final public function toArray(): array
     {
         return [
             'type' => $this->getType(),
             'name' => $this->name,
             'parameters' => $this->parameters
         ];
-    }
-
-    /**
-     * Registers current action in registry
-     *
-     * @see ActionRegistry::set()
-     */
-    private function register(): void
-    {
-        ActionRegistry::set($this->name, self::class);
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws ExplanatoryException
-     */
-    final public static function unserialize(array $message)
-    {
-        if (!array_key_exists('name', $message) || !array_key_exists('parameters', $message)) {
-            throw new ExplanatoryException(
-                "Any correct action message must have `name` and `parameters` properties.",
-                $message
-            );
-        }
-
-        $name = $message['name'];
-        $parameters = $message['parameters'];
-
-        // finding action class with ActionRegistry
-        if (null === $class = ActionRegistry::get($name)) {
-            throw new ExplanatoryException("Action with name `{$name}` is not exists.", $message);
-        }
-
-        /** @var Action $action */
-        $action = new $class;
-        $action->bindAll($parameters);
-        return $action;
     }
 
     private static function getValidator(): ValidatorInterface

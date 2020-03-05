@@ -33,20 +33,9 @@ interface MessageInterface
     public function getType(): string;
 
     /**
-     * Converts the message in simple array for encoding to others formats.  Uses by {@see MessageEncoder}
+     * Converts message into array.
      *
      * @return array
-     * @see MessageEncoder::encode()
      */
-    public function serialize(): array;
-
-    /**
-     * Create a new message instance from array. Uses by {@see MessageFormatter}
-     *
-     * @param array $message
-     *
-     * @return static|null
-     * @see MessageFormatter::decode()
-     */
-    public static function unserialize(array $message);
+    public function toArray(): array;
 }

@@ -16,28 +16,17 @@
 
 namespace RM\Standard\Message;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Class ActionRegistry
  *
  * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
+ *
+ * @method set(string $actionName, string $class)
+ * @method get(string $actionName)
  */
-final class ActionRegistry
+final class ActionRegistry extends ArrayCollection
 {
-    /**
-     * The list of registered actions in format name => class.
-     *
-     * @var array
-     */
-    private static array $actions = [];
-
-    public static function set(string $key, $value): void
-    {
-        self::$actions[$key] = $value;
-    }
-
-    public static function get(string $key): ?string
-    {
-        return self::$actions[$key] ?? null;
-    }
 }

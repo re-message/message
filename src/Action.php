@@ -22,7 +22,7 @@ use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * Basic action class
+ * Abstract class for actions.
  *
  * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
@@ -45,7 +45,7 @@ abstract class Action implements ValidatableMessageInterface
     /**
      * Action constructor.
      *
-     * @param string $name unique name of API action
+     * @param string $name        unique name of API action
      * @param array  $constraints list of constraints for each action parameter.
      *                            MUST be passed in a child class. No when calling the constructor.
      *
@@ -63,7 +63,7 @@ abstract class Action implements ValidatableMessageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getType(): string
     {
@@ -81,8 +81,9 @@ abstract class Action implements ValidatableMessageInterface
     {
         if (!array_key_exists($parameter, $this->constraints)) {
             throw new ExplanatoryException(
-                "Parameter with name `{$parameter}` for action `{$this->getName()}` is not exists.",
-                $parameter, null, "https://dev.relmsg.ru/api/method/{$this->getName()}"
+                sprintf('Parameter with name `%s` for action `%s` is not exists.', $parameter, $this->getName()),
+                $parameter, null,
+                sprintf('https://dev.relmsg.ru/api/method/%s', $this->getName())
             );
         }
 
@@ -99,8 +100,13 @@ abstract class Action implements ValidatableMessageInterface
         if ($violations->count() !== 0) {
             $violation = $violations->get(0);
             throw new ExplanatoryException(
-                "This value is not compliance with parameter constraints: {$violation->getMessage()} ({$violation->getCode()})",
-                $value, null, "https://dev.relmsg.ru/api/method/{$this->getName()}#parameter-{$parameter}"
+                sprintf(
+                    'This value is not compliance with parameter constraints: %s (%s)',
+                    $violation->getMessage(),
+                    $violation->getCode()
+                ),
+                $value, null,
+                sprintf('https://dev.relmsg.ru/api/method/%s#parameter-%s', $this->getName(), $parameter)
             );
         }
 
@@ -126,7 +132,7 @@ abstract class Action implements ValidatableMessageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     final public function validateAll(): ConstraintViolationListInterface
     {
@@ -141,17 +147,17 @@ abstract class Action implements ValidatableMessageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     final public function validateValue(string $parameter, $value): ConstraintViolationListInterface
     {
-        $validator = $this->getValidator();
+        $validator = self::getValidator();
         $constraints = $this->constraints[$parameter];
         return $validator->validate($value, $constraints);
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     final public function validateParameter(string $parameter): ConstraintViolationListInterface
     {
@@ -159,7 +165,7 @@ abstract class Action implements ValidatableMessageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     final public function toArray(): array
     {

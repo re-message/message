@@ -39,14 +39,14 @@ class ExplanatoryException extends Exception
      *
      * @var string
      */
-    private string $solution;
+    private ?string $solution;
 
     /**
      * A link to solution and/or explanation.
      *
      * @var string
      */
-    private string $link;
+    private ?string $link;
 
     public function __construct(
         string $message,
@@ -76,7 +76,7 @@ class ExplanatoryException extends Exception
         return $this->link;
     }
 
-    public function log(LoggerInterface $logger, $level)
+    public function log(LoggerInterface $logger, $level): void
     {
         $logger->log(
             $level,

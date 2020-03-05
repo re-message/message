@@ -17,7 +17,6 @@
 namespace RM\Standard\Message;
 
 use ReflectionClass;
-use ReflectionException;
 
 /**
  * Enum MessageType
@@ -34,21 +33,21 @@ class MessageType
      *
      * @see Action
      */
-    const ACTION = 'action';
+    public const ACTION = 'action';
     /**
      * Response from server on client action message.
      * Sent only by server.
      *
      * @see Response
      */
-    const RESPONSE = 'response';
+    public const RESPONSE = 'response';
     /**
      * Subscribe on some event. Without this server will not send event messages.
      * Sent only by client.
      *
      * @see Subscription
      */
-    const SUBSCRIPTION = 'subscription';
+    public const SUBSCRIPTION = 'subscription';
     /**
      * Means that a certain event has occurred on the server that the client MAY process.
      * The client cannot send this type of message. They will be ignored by the server.
@@ -56,14 +55,14 @@ class MessageType
      *
      * @see Event
      */
-    const EVENT = 'event';
+    public const EVENT = 'event';
     /**
      * Means that an error occurred while processing the last message from the client.
      * The client cannot send this type of message. They will be ignored by the server.
      *
      * @see Error
      */
-    const ERROR = 'error';
+    public const ERROR = 'error';
     /**
      * Means server comment. No processing required. Such messages will simply be logged and nothing more.
      * The client cannot send this type of message. They will be ignored by the server.
@@ -71,7 +70,7 @@ class MessageType
      *
      * @see Comment
      */
-    const COMMENT = 'comment';
+    public const COMMENT = 'comment';
 
     /**
      * Checks if this type of message exists
@@ -83,7 +82,7 @@ class MessageType
     public static function exists(string $type): bool
     {
         $type = mb_strtoupper($type);
-        return array_search($type, self::all()) !== false;
+        return in_array($type, self::all(), true);
     }
 
     /**
@@ -93,11 +92,7 @@ class MessageType
      */
     public static function all(): array
     {
-        try {
-            $reflect = new ReflectionClass(get_called_class());
-            return array_keys($reflect->getConstants());
-        } catch (ReflectionException $e) {
-            return [];
-        }
+        $reflect = new ReflectionClass(static::class);
+        return array_keys($reflect->getConstants());
     }
 }

@@ -21,6 +21,7 @@ namespace RM\Standard\Message;
  *
  * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
+ * @see MessageType::RESPONSE
  */
 class Response implements MessageInterface
 {
@@ -32,7 +33,7 @@ class Response implements MessageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getType(): string
     {
@@ -40,7 +41,7 @@ class Response implements MessageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function toArray(): array
     {
@@ -48,19 +49,5 @@ class Response implements MessageInterface
             'type' => $this->getType(),
             'content' => $this->content
         ];
-    }
-
-    /**
-     * {@inheritDoc}
-     * @throws ExplanatoryException
-     */
-    public static function unserialize(array $message)
-    {
-        if (!array_key_exists('content', $message)) {
-            throw new ExplanatoryException("Any correct response message must have `content` property.", $message);
-        }
-
-        $content = $message['content'];
-        return new self($content);
     }
 }

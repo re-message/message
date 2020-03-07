@@ -16,10 +16,10 @@
 
 namespace RM\Standard\Message;
 
+use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 use Symfony\Component\Validator\Validation;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Abstract class for actions.
@@ -30,34 +30,39 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 abstract class Action implements ValidatableMessageInterface
 {
-    /**
-     * Unique name of action.
-     *
-     * @var string
-     * @see https://dev.relmsg.ru/api/methods
-     */
-    private string $name;
-    private array $constraints;
     private array $parameters = [];
 
     /**
-     * Action constructor.
+     * The unique name of action.
      *
-     * @param string $name        unique name of API action
-     * @param array  $constraints list of constraints for each action parameter.
-     *                            MUST be passed in a child class. No when calling the constructor.
-     *
-     * @see ValidatorInterface::validate()
+     * @return string
+     * @see https://dev.relmsg.ru/api/methods
      */
-    public function __construct(string $name, array $constraints = [])
-    {
-        $this->name = $name;
-        $this->constraints = $constraints;
-    }
+    abstract public function getName(): string;
 
-    public function getName(): string
+    /**
+     * The constraints for all parameters.
+     * Format: parameter => constraints
+     *
+     * @return Constraint[][] Parameters constraints for this action.
+     */
+    abstract protected function getConstraints(): array;
+
+    /**
+     * The constraints for parameter.
+     *
+     * @param string|null $parameter The name of parameter.
+     *
+     * @return Constraint[]|null Parameter constraints or null if there are no constraints.
+     */
+    protected function getParameterConstraints(string $parameter): ?array
     {
-        return $this->name;
+        $constraints = $this->getConstraints();
+        if (!array_key_exists($parameter, $constraints)) {
+            return null;
+        }
+
+        return $constraints[$parameter];
     }
 
     /**
@@ -69,6 +74,8 @@ abstract class Action implements ValidatableMessageInterface
     }
 
     /**
+     * Bind given value to parameter and validate him.
+     *
      * @param string $parameter
      * @param mixed  $value
      *
@@ -77,7 +84,7 @@ abstract class Action implements ValidatableMessageInterface
      */
     final public function bind(string $parameter, $value): bool
     {
-        if (!array_key_exists($parameter, $this->constraints)) {
+        if (!array_key_exists($parameter, $this->getConstraints())) {
             throw new ExplanatoryException(
                 sprintf('Parameter with name `%s` for action `%s` is not exists.', $parameter, $this->getName()),
                 $parameter, null,
@@ -113,6 +120,8 @@ abstract class Action implements ValidatableMessageInterface
     }
 
     /**
+     * Binds all parameters with validation.
+     *
      * @param array $parameters
      *
      * @return bool
@@ -136,7 +145,7 @@ abstract class Action implements ValidatableMessageInterface
     {
         $violations = new ConstraintViolationList();
 
-        foreach (array_keys($this->constraints) as $parameter) {
+        foreach (array_keys($this->getConstraints()) as $parameter) {
             $v = $this->validateParameter($parameter);
             $violations->addAll($v);
         }
@@ -150,7 +159,7 @@ abstract class Action implements ValidatableMessageInterface
     final public function validateValue(string $parameter, $value): ConstraintViolationListInterface
     {
         $validator = Validation::createValidator();
-        $constraints = $this->constraints[$parameter];
+        $constraints = $this->getParameterConstraints($parameter);
         return $validator->validate($value, $constraints);
     }
 
@@ -169,7 +178,7 @@ abstract class Action implements ValidatableMessageInterface
     {
         return [
             'type' => $this->getType(),
-            'name' => $this->name,
+            'name' => $this->getName(),
             'parameters' => $this->parameters
         ];
     }

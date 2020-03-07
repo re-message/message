@@ -35,6 +35,7 @@ class JsonMessageFormatter implements MessageFormatterInterface
     {
         $this->encoder = new JsonEncoder();
         $this->decoder = new JsonDecoder();
+        $this->decoder->setObjectDecoding(JsonDecoder::ASSOC_ARRAY);
     }
 
     /**

@@ -30,8 +30,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 abstract class Action implements ValidatableMessageInterface
 {
-    private static ?ValidatorInterface $validator = null;
-
     /**
      * Unique name of action.
      *
@@ -90,7 +88,7 @@ abstract class Action implements ValidatableMessageInterface
         if (is_object($value) || is_resource($value)) {
             $type = gettype($value);
             throw new ExplanatoryException(
-                "You cannot use this value type ({$type}) to send messages.",
+                sprintf('You cannot use this value type (%s) to send messages.', $type),
                 $value,
                 'Serialize your value.'
             );
@@ -101,7 +99,7 @@ abstract class Action implements ValidatableMessageInterface
             $violation = $violations->get(0);
             throw new ExplanatoryException(
                 sprintf(
-                    'This value is not compliance with parameter constraints: %s (%s)',
+                    'This value is not compliance with parameter constraints: %s (%s).',
                     $violation->getMessage(),
                     $violation->getCode()
                 ),
@@ -151,7 +149,7 @@ abstract class Action implements ValidatableMessageInterface
      */
     final public function validateValue(string $parameter, $value): ConstraintViolationListInterface
     {
-        $validator = self::getValidator();
+        $validator = Validation::createValidator();
         $constraints = $this->constraints[$parameter];
         return $validator->validate($value, $constraints);
     }
@@ -174,14 +172,5 @@ abstract class Action implements ValidatableMessageInterface
             'name' => $this->name,
             'parameters' => $this->parameters
         ];
-    }
-
-    private static function getValidator(): ValidatorInterface
-    {
-        if (self::$validator === null) {
-            self::$validator = Validation::createValidator();
-        }
-
-        return self::$validator;
     }
 }

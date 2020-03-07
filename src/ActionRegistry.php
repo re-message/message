@@ -24,8 +24,9 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
  *
- * @method set(string $actionName, string $class)
- * @method get(string $actionName)
+ * @method bool set(string $actionName, string $class)
+ * @method string get(string $actionName)
+ * @method bool containsKey(string $actionName)
  */
 final class ActionRegistry extends ArrayCollection
 {

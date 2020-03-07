@@ -39,6 +39,12 @@ final class ActionRegistry
         $this->elements->set($name, $class);
     }
 
+    public function push(string $class): void
+    {
+        /** @var Action $class */
+        $this->elements->set($class::getName(), $class);
+    }
+
     public function get(string $name): ?string
     {
         return $this->elements->get($name);

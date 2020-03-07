@@ -64,7 +64,7 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
             return false;
         }
 
-        $diff = array_diff_key($array, array_flip($this->getRequiredProperties()));
+        $diff = array_diff_key(array_flip($this->getRequiredProperties()), $array);
         return count($diff) === 0;
     }
 

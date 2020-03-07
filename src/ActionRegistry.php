@@ -17,17 +17,35 @@
 namespace RM\Standard\Message;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Class ActionRegistry
  *
  * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
- *
- * @method bool set(string $actionName, string $class)
- * @method string get(string $actionName)
- * @method bool containsKey(string $actionName)
  */
-final class ActionRegistry extends ArrayCollection
+final class ActionRegistry
 {
+    private Collection $elements;
+
+    public function __construct()
+    {
+        $this->elements = new ArrayCollection();
+    }
+
+    public function set(string $name, string $class): void
+    {
+        $this->elements->set($name, $class);
+    }
+
+    public function get(string $name): ?string
+    {
+        return $this->elements->get($name);
+    }
+
+    public function has(string $name): bool
+    {
+        return $this->elements->containsKey($name);
+    }
 }

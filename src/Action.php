@@ -38,7 +38,7 @@ abstract class Action implements ValidatableMessageInterface
      * @return string
      * @see https://dev.relmsg.ru/api/methods
      */
-    abstract public function getName(): string;
+    abstract public static function getName(): string;
 
     /**
      * The constraints for all parameters.
@@ -86,9 +86,9 @@ abstract class Action implements ValidatableMessageInterface
     {
         if (!array_key_exists($parameter, $this->getConstraints())) {
             throw new ExplanatoryException(
-                sprintf('Parameter with name `%s` for action `%s` is not exists.', $parameter, $this->getName()),
+                sprintf('Parameter with name `%s` for action `%s` is not exists.', $parameter, static::getName()),
                 $parameter, null,
-                sprintf('https://dev.relmsg.ru/api/method/%s', $this->getName())
+                sprintf('https://dev.relmsg.ru/api/method/%s', static::getName())
             );
         }
 
@@ -111,7 +111,7 @@ abstract class Action implements ValidatableMessageInterface
                     $violation->getCode()
                 ),
                 $value, null,
-                sprintf('https://dev.relmsg.ru/api/method/%s#parameter-%s', $this->getName(), $parameter)
+                sprintf('https://dev.relmsg.ru/api/method/%s#parameter-%s', static::getName(), $parameter)
             );
         }
 
@@ -178,7 +178,7 @@ abstract class Action implements ValidatableMessageInterface
     {
         return [
             'type' => $this->getType(),
-            'name' => $this->getName(),
+            'name' => static::getName(),
             'parameters' => $this->parameters
         ];
     }

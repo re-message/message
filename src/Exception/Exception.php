@@ -14,17 +14,20 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standard\Message\Serializer;
+namespace RM\Standard\Message\Exception;
 
-use RM\Standard\Message\Exception;
+use Throwable;
 
 /**
- * Class SerializerException
+ * Class Exception
  *
- * @package RM\Standard\Message\Serializer
+ * @package RM\Standard\Message\Exception
  * @author  h1karo <h1karo@outlook.com>
  */
-class SerializerException extends Exception
+class Exception extends \Exception
 {
-
+    public function __construct(string $message, Throwable $previous = null)
+    {
+        parent::__construct($message, 0, $previous);
+    }
 }

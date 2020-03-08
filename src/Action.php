@@ -16,6 +16,7 @@
 
 namespace RM\Standard\Message;
 
+use RM\Standard\Message\Exception\ExplanatoryException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;

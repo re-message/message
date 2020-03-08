@@ -20,12 +20,12 @@ use Generator;
 use PHPUnit\Framework\TestCase;
 use RM\Standard\Message\ActionRegistry;
 use RM\Standard\Message\Error;
-use RM\Standard\Message\ExplanatoryException;
+use RM\Standard\Message\Exception\ExplanatoryException;
+use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\Response;
 use RM\Standard\Message\Serializer\ActionSerializer;
 use RM\Standard\Message\Serializer\MessageSerializerInterface;
-use RM\Standard\Message\Serializer\SerializerException;
 use RM\Standard\Message\Tests\Stubs\SomeAction;
 
 class ActionSerializerTest extends TestCase

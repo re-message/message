@@ -14,14 +14,12 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standard\Message\Format;
-
-use RM\Standard\Message\Exception;
+namespace RM\Standard\Message\Exception;
 
 /**
  * Class FormatterException
  *
- * @package RM\Standard\Message\Format
+ * @package RM\Standard\Message\Exception
  * @author  h1karo <h1karo@outlook.com>
  */
 class FormatterException extends Exception

@@ -18,6 +18,7 @@ namespace RM\Standard\Message\Serializer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\MessageInterface;
 
 /**

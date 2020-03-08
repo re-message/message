@@ -16,7 +16,8 @@
 
 namespace RM\Standard\Message\Serializer;
 
-use RM\Standard\Message\Format\FormatterException;
+use RM\Standard\Message\Exception\FormatterException;
+use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 use RM\Standard\Message\Response;

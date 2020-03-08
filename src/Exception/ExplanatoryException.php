@@ -14,13 +14,13 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standard\Message;
+namespace RM\Standard\Message\Exception;
 
 use Psr\Log\LoggerInterface;
 use Throwable;
 
 /**
- * Class ExplanatoryException
+ * Class ExplanatoryException\Exception
  *
  * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>

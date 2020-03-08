@@ -18,8 +18,9 @@ namespace RM\Standard\Message\Serializer;
 
 use RM\Standard\Message\Action;
 use RM\Standard\Message\ActionRegistry;
-use RM\Standard\Message\ExplanatoryException;
-use RM\Standard\Message\Format\FormatterException;
+use RM\Standard\Message\Exception\ExplanatoryException;
+use RM\Standard\Message\Exception\FormatterException;
+use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\Format\MessageFormatterInterface;
 use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
@@ -29,7 +30,7 @@ use RM\Standard\Message\MessageType;
  *
  * @package RM\Standard\Message\Serializer
  * @author  h1karo <h1karo@outlook.com>
- * @see MessageType::ACTION
+ * @see     MessageType::ACTION
  */
 class ActionSerializer extends AbstractMessageSerializer
 {

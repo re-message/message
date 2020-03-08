@@ -16,7 +16,7 @@
 
 namespace RM\Standard\Message\Serializer;
 
-use RM\Standard\Message\Format\FormatterException;
+use RM\Standard\Message\Exception\FormatterException;
 use RM\Standard\Message\Format\JsonMessageFormatter;
 use RM\Standard\Message\Format\MessageFormatterInterface;
 use RM\Standard\Message\MessageInterface;

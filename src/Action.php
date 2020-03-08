@@ -33,6 +33,12 @@ abstract class Action implements ValidatableMessageInterface
     private array $parameters = [];
 
     /**
+     * Any data should NOT be passed with constructor.
+     * Please use setters instead.
+     */
+    final public function __construct() {}
+
+    /**
      * The unique name of action.
      *
      * @return string

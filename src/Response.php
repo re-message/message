@@ -21,7 +21,7 @@ namespace RM\Standard\Message;
  *
  * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
- * @see MessageType::RESPONSE
+ * @see     MessageType::RESPONSE
  */
 class Response implements MessageInterface
 {
@@ -30,6 +30,11 @@ class Response implements MessageInterface
     public function __construct(array $content)
     {
         $this->content = $content;
+    }
+
+    public function getContent(): array
+    {
+        return $this->content;
     }
 
     /**
@@ -47,7 +52,7 @@ class Response implements MessageInterface
     {
         return [
             'type' => $this->getType(),
-            'content' => $this->content
+            'content' => $this->getContent()
         ];
     }
 }

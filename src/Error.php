@@ -21,7 +21,7 @@ namespace RM\Standard\Message;
  *
  * @package RM\Standard\Message
  * @author  h1karo <h1karo@outlook.com>
- * @see MessageType::ERROR
+ * @see     MessageType::ERROR
  */
 class Error implements MessageInterface
 {
@@ -32,6 +32,16 @@ class Error implements MessageInterface
     {
         $this->code = $code;
         $this->message = $message;
+    }
+
+    public function getCode(): int
+    {
+        return $this->code;
+    }
+
+    public function getMessage(): string
+    {
+        return $this->message;
     }
 
     /**
@@ -49,8 +59,8 @@ class Error implements MessageInterface
     {
         return [
             'type' => $this->getType(),
-            'code' => $this->code,
-            'message' => $this->message
+            'code' => $this->getCode(),
+            'message' => $this->getMessage()
         ];
     }
 }

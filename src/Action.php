@@ -38,7 +38,7 @@ abstract class Action implements ValidatableMessageInterface
      * Any data should NOT be passed with constructor.
      * Please use setters instead.
      */
-    final public function __construct() {}
+    final public function __construct() { }
 
     /**
      * The unique name of action.
@@ -180,7 +180,7 @@ abstract class Action implements ValidatableMessageInterface
     }
 
     /**
-     * Check the existence of value or default value for parameter.
+     * Checks the existence of value or default value for parameter.
      *
      * @param string $name
      *
@@ -202,15 +202,29 @@ abstract class Action implements ValidatableMessageInterface
         return [];
     }
 
-    final public function hasDefaultValue(string $name): bool
-    {
-        return array_key_exists($name, $this->getDefaultValues());
-    }
-
+    /**
+     * Returns the default value for parameter or null if it does not exist.
+     *
+     * @param string $name
+     *
+     * @return mixed|null
+     */
     final public function getDefaultValue(string $name)
     {
         $defaults = $this->getDefaultValues();
         return $defaults[$name] ?? null;
+    }
+
+    /**
+     * Checks the existence of default value for the parameter.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    final public function hasDefaultValue(string $name): bool
+    {
+        return array_key_exists($name, $this->getDefaultValues());
     }
 
     /**

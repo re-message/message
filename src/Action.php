@@ -17,6 +17,7 @@
 namespace RM\Standard\Message;
 
 use RM\Standard\Message\Exception\ExplanatoryException;
+use RM\Standard\Message\Exception\InvalidParameterException;
 use RM\Standard\Message\Exception\MissingParameterException;
 use RM\Standard\Message\Exception\NonSerializableTypeException;
 use Symfony\Component\Validator\Constraint;
@@ -91,7 +92,7 @@ abstract class Action implements ValidatableMessageInterface
      * @return bool
      * @throws MissingParameterException
      * @throws NonSerializableTypeException
-     * @throws ExplanatoryException
+     * @throws InvalidParameterException
      */
     final public function bind(string $parameter, $value): bool
     {
@@ -106,15 +107,7 @@ abstract class Action implements ValidatableMessageInterface
         $violations = $this->validateValue($parameter, $value);
         if ($violations->count() !== 0) {
             $violation = $violations->get(0);
-            throw new ExplanatoryException(
-                sprintf(
-                    'This value is not compliance with parameter constraints: %s (%s).',
-                    $violation->getMessage(),
-                    $violation->getCode()
-                ),
-                $value, null,
-                sprintf('https://dev.relmsg.ru/api/method/%s#parameter-%s', static::getName(), $parameter)
-            );
+            throw new InvalidParameterException(static::getName(), $parameter, $value, $violation);
         }
 
         $this->parameters[$parameter] = $value;

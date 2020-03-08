@@ -145,6 +145,76 @@ abstract class Action implements ValidatableMessageInterface
     }
 
     /**
+     * Returns the current value of the parameter or null if it does not exist.
+     *
+     * @param string $name
+     *
+     * @return mixed|null
+     */
+    final protected function getBoundValue(string $name)
+    {
+        return $this->parameters[$name] ?? null;
+    }
+
+    /**
+     * Checks the existence of value for the parameter.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    final protected function hasBoundValue(string $name): bool
+    {
+        return array_key_exists($name, $this->parameters);
+    }
+
+    /**
+     * Returns the current parameter value or the default value or null.
+     *
+     * @param string $name
+     *
+     * @return mixed|null
+     */
+    final public function getValue(string $name)
+    {
+        return $this->getBoundValue($name) ?? $this->getDefaultValue($name);
+    }
+
+    /**
+     * Check the existence of value or default value for parameter.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    final public function hasValue(string $name): bool
+    {
+        return $this->hasBoundValue($name) || $this->hasDefaultValue($name);
+    }
+
+    /**
+     * Returns a default values for action parameters.
+     * You can override this method to provide default values.
+     *
+     * @return array
+     */
+    public function getDefaultValues(): array
+    {
+        return [];
+    }
+
+    final public function hasDefaultValue(string $name): bool
+    {
+        return array_key_exists($name, $this->parameters);
+    }
+
+    final public function getDefaultValue(string $name)
+    {
+        $defaults = $this->getDefaultValues();
+        return $defaults[$name] ?? null;
+    }
+
+    /**
      * @inheritDoc
      */
     final public function validateAll(): ConstraintViolationListInterface
@@ -174,7 +244,7 @@ abstract class Action implements ValidatableMessageInterface
      */
     final public function validateParameter(string $parameter): ConstraintViolationListInterface
     {
-        return $this->validateValue($parameter, $this->parameters[$parameter]);
+        return $this->validateValue($parameter, $this->getValue($parameter));
     }
 
     /**

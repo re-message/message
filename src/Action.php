@@ -204,7 +204,7 @@ abstract class Action implements ValidatableMessageInterface
 
     final public function hasDefaultValue(string $name): bool
     {
-        return array_key_exists($name, $this->parameters);
+        return array_key_exists($name, $this->getDefaultValues());
     }
 
     final public function getDefaultValue(string $name)

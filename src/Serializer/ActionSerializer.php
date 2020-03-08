@@ -18,6 +18,7 @@ namespace RM\Standard\Message\Serializer;
 
 use RM\Standard\Message\Action;
 use RM\Standard\Message\ActionRegistry;
+use RM\Standard\Message\Exception\ActionNotFoundException;
 use RM\Standard\Message\Exception\ExplanatoryException;
 use RM\Standard\Message\Exception\FormatterException;
 use RM\Standard\Message\Exception\SerializerException;
@@ -48,6 +49,7 @@ class ActionSerializer extends AbstractMessageSerializer
      * @return Action
      * @throws FormatterException
      * @throws SerializerException
+     * @throws ActionNotFoundException
      * @throws ExplanatoryException
      */
     public function deserialize(string $message): MessageInterface
@@ -58,6 +60,10 @@ class ActionSerializer extends AbstractMessageSerializer
         }
 
         $name = $array['name'];
+        if (!$this->registry->has($name)) {
+            throw new ActionNotFoundException($name);
+        }
+
         $class = $this->registry->get($name);
 
         /** @var Action $action */

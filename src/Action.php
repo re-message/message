@@ -16,7 +16,6 @@
 
 namespace RM\Standard\Message;
 
-use RM\Standard\Message\Exception\ExplanatoryException;
 use RM\Standard\Message\Exception\InvalidParameterException;
 use RM\Standard\Message\Exception\MissingParameterException;
 use RM\Standard\Message\Exception\NonSerializableTypeException;
@@ -133,7 +132,9 @@ abstract class Action implements ValidatableMessageInterface
      * @param array $parameters
      *
      * @return bool
-     * @throws ExplanatoryException
+     * @throws MissingParameterException
+     * @throws NonSerializableTypeException
+     * @throws InvalidParameterException
      */
     final public function bindAll(array $parameters): bool
     {

@@ -17,6 +17,7 @@
 namespace RM\Standard\Message;
 
 use RM\Standard\Message\Exception\ExplanatoryException;
+use RM\Standard\Message\Exception\MissingParameterException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
@@ -87,16 +88,13 @@ abstract class Action implements ValidatableMessageInterface
      * @param mixed  $value
      *
      * @return bool
+     * @throws MissingParameterException
      * @throws ExplanatoryException
      */
     final public function bind(string $parameter, $value): bool
     {
         if (!array_key_exists($parameter, $this->getConstraints())) {
-            throw new ExplanatoryException(
-                sprintf('Parameter with name `%s` for action `%s` is not exists.', $parameter, static::getName()),
-                $parameter, null,
-                sprintf('https://dev.relmsg.ru/api/method/%s', static::getName())
-            );
+            throw new MissingParameterException($parameter, static::getName());
         }
 
         if (is_object($value) || is_resource($value)) {

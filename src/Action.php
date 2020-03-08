@@ -18,6 +18,7 @@ namespace RM\Standard\Message;
 
 use RM\Standard\Message\Exception\ExplanatoryException;
 use RM\Standard\Message\Exception\MissingParameterException;
+use RM\Standard\Message\Exception\NonSerializableTypeException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
@@ -89,6 +90,7 @@ abstract class Action implements ValidatableMessageInterface
      *
      * @return bool
      * @throws MissingParameterException
+     * @throws NonSerializableTypeException
      * @throws ExplanatoryException
      */
     final public function bind(string $parameter, $value): bool
@@ -98,12 +100,7 @@ abstract class Action implements ValidatableMessageInterface
         }
 
         if (is_object($value) || is_resource($value)) {
-            $type = gettype($value);
-            throw new ExplanatoryException(
-                sprintf('You cannot use this value type (%s) to send messages.', $type),
-                $value,
-                'Serialize your value.'
-            );
+            throw new NonSerializableTypeException($value);
         }
 
         $violations = $this->validateValue($parameter, $value);

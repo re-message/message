@@ -46,7 +46,7 @@ abstract class Action implements ValidatableMessageInterface
      * The unique name of action.
      *
      * @return string
-     * @see https://dev.relmsg.ru/api/methods
+     * @see https://dev.relmsg.ru/api/actions
      */
     abstract public static function getName(): string;
 
@@ -61,24 +61,37 @@ abstract class Action implements ValidatableMessageInterface
     /**
      * The constraints for parameter.
      *
-     * @param string|null $parameter The name of parameter.
+     * @param string|null $name The name of parameter.
      *
      * @return Constraint[]|null Parameter constraints or null if there are no constraints.
      */
-    protected function getParameterConstraints(string $parameter): ?array
+    protected function getParameterConstraints(string $name): ?array
     {
-        $constraints = $this->getConstraints();
-        if (!array_key_exists($parameter, $constraints)) {
+        if (!$this->hasParameter($name)) {
             return null;
         }
 
-        return $constraints[$parameter];
+        $constraints = $this->getConstraints();
+        return $constraints[$name];
+    }
+
+    /**
+     * Checks the existence of parameter by name.
+     * The parameter should be defined in {@see getConstraints()}.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    final public function hasParameter(string $name): bool
+    {
+        return array_key_exists($name, $this->getConstraints());
     }
 
     /**
      * @inheritDoc
      */
-    public function getType(): string
+    final public function getType(): string
     {
         return MessageType::ACTION;
     }

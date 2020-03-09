@@ -26,13 +26,17 @@ use Symfony\Component\Validator\ConstraintViolationInterface;
  */
 class InvalidParameterException extends ExplanatoryException
 {
-    private const LINK_FORMAT = 'https://dev.relmsg.ru/api/action/%s#parameter-%s';
+    private const PARAMETER_LINK_FORMAT = 'https://dev.relmsg.ru/api/action/%s#parameter-%s';
+    private const ACTION_LINK_FORMAT    = 'https://dev.relmsg.ru/api/action/%s';
 
     private ConstraintViolationInterface $violation;
 
-    public function __construct(string $action, string $parameter, $value, ConstraintViolationInterface $violation)
+    public function __construct(string $action, ?string $parameter, $value, ConstraintViolationInterface $violation)
     {
-        $link = sprintf(self::LINK_FORMAT, $action, $parameter);
+        $link = $parameter ?
+            sprintf(self::PARAMETER_LINK_FORMAT, $action, $parameter) :
+            sprintf(self::ACTION_LINK_FORMAT, $action);
+
         parent::__construct('This value does not satisfy the parameter constraint.', $value, null, $link);
 
         $this->violation = $violation;

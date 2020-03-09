@@ -106,12 +106,11 @@ abstract class Action implements ValidatableMessageInterface
      * @param string $parameter
      * @param mixed  $value
      *
-     * @return bool
      * @throws UnknownParameterException
      * @throws NonSerializableTypeException
      * @throws InvalidParameterException
      */
-    final public function bind(string $parameter, $value): bool
+    final public function bind(string $parameter, $value): void
     {
         if (!$this->hasParameter($parameter)) {
             throw new UnknownParameterException($parameter, static::getName());
@@ -128,7 +127,6 @@ abstract class Action implements ValidatableMessageInterface
         }
 
         $this->parameters->set($parameter, $value);
-        return true;
     }
 
     /**
@@ -136,20 +134,15 @@ abstract class Action implements ValidatableMessageInterface
      *
      * @param iterable $parameters
      *
-     * @return bool
      * @throws UnknownParameterException
      * @throws NonSerializableTypeException
      * @throws InvalidParameterException
      */
-    final public function bindAll(iterable $parameters): bool
+    final public function bindAll(iterable $parameters): void
     {
         foreach ($parameters as $parameter => $value) {
-            if (false === $this->bind($parameter, $value)) {
-                return false;
-            }
+            $this->bind($parameter, $value);
         }
-
-        return true;
     }
 
     /**

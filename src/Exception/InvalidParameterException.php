@@ -17,7 +17,6 @@
 namespace RM\Standard\Message\Exception;
 
 use Symfony\Component\Validator\ConstraintViolationInterface;
-use Throwable;
 
 /**
  * Class InvalidParameterException
@@ -31,15 +30,10 @@ class InvalidParameterException extends ExplanatoryException
 
     private ConstraintViolationInterface $violation;
 
-    public function __construct(
-        string $action,
-        string $parameter,
-        $value,
-        ConstraintViolationInterface $violation,
-        Throwable $previous = null
-    ) {
+    public function __construct(string $action, string $parameter, $value, ConstraintViolationInterface $violation)
+    {
         $link = sprintf(self::LINK_FORMAT, $action, $parameter);
-        parent::__construct('This value does not satisfy the parameter constraint.', $value, null, $link, $previous);
+        parent::__construct('This value does not satisfy the parameter constraint.', $value, null, $link);
 
         $this->violation = $violation;
     }

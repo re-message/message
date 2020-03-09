@@ -16,8 +16,6 @@
 
 namespace RM\Standard\Message\Exception;
 
-use Throwable;
-
 /**
  * Class ActionNotFoundException
  *
@@ -28,9 +26,9 @@ class ActionNotFoundException extends ExplanatoryException
 {
     private const LINK = 'https://dev.relmsg.ru/api/actions';
 
-    public function __construct(string $action, Throwable $previous = null)
+    public function __construct(string $action)
     {
         $message = sprintf('Action with name `%s` does not exist.', $action);
-        parent::__construct($message, $action, null, self::LINK, $previous);
+        parent::__construct($message, $action, null, self::LINK);
     }
 }

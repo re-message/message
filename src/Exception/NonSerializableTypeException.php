@@ -16,8 +16,6 @@
 
 namespace RM\Standard\Message\Exception;
 
-use Throwable;
-
 /**
  * Class NonSerializableTypeException
  *
@@ -26,10 +24,10 @@ use Throwable;
  */
 class NonSerializableTypeException extends ExplanatoryException
 {
-    public function __construct($value, Throwable $previous = null)
+    public function __construct($value)
     {
         $type = gettype($value);
         $message = sprintf('You cannot use this value type (%s) to send messages.', $type);
-        parent::__construct($message, $value, 'Serialize your value.', null, $previous);
+        parent::__construct($message, $value, 'Serialize your value.', null);
     }
 }

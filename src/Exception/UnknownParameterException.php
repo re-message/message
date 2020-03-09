@@ -16,8 +16,6 @@
 
 namespace RM\Standard\Message\Exception;
 
-use Throwable;
-
 /**
  * Class MissingParameterException
  *
@@ -28,10 +26,10 @@ class UnknownParameterException extends ExplanatoryException
 {
     private const LINK_FORMAT = 'https://dev.relmsg.ru/api/action/%s';
 
-    public function __construct(string $parameter, string $action, Throwable $previous = null)
+    public function __construct(string $parameter, string $action)
     {
         $message = sprintf('Parameter with name `%s` for action `%s` does not exist.', $parameter, $action);
         $link = sprintf(self::LINK_FORMAT, $action);
-        parent::__construct($message, $parameter, null, $link, $previous);
+        parent::__construct($message, $parameter, null, $link);
     }
 }

@@ -17,7 +17,6 @@
 namespace RM\Standard\Message\Exception;
 
 use Psr\Log\LoggerInterface;
-use Throwable;
 
 /**
  * Class ExplanatoryException\Exception
@@ -48,14 +47,9 @@ class ExplanatoryException extends Exception
      */
     private ?string $link;
 
-    public function __construct(
-        string $message,
-        $reason,
-        string $solution = null,
-        string $link = null,
-        Throwable $previous = null
-    ) {
-        parent::__construct($message, $previous);
+    public function __construct(string $message, $reason, string $solution = null, string $link = null)
+    {
+        parent::__construct($message);
         $this->reason = $reason;
         $this->solution = $solution;
         $this->link = $link;

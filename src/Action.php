@@ -108,7 +108,7 @@ abstract class Action implements ValidatableMessageInterface
      */
     final public function bind(string $parameter, $value): bool
     {
-        if (!array_key_exists($parameter, $this->getConstraints())) {
+        if (!$this->hasParameter($parameter)) {
             throw new MissingParameterException($parameter, static::getName());
         }
 

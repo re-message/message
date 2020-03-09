@@ -261,7 +261,11 @@ abstract class Action implements ValidatableMessageInterface
      */
     final public function validateParameter(string $parameter): ConstraintViolationListInterface
     {
-        return $this->validateValue($parameter, $this->getValue($parameter));
+        if ($this->hasDefaultValue($parameter) && !$this->hasBoundValue($parameter)) {
+            return new ConstraintViolationList();
+        }
+
+        return $this->validateValue($parameter, $this->getBoundValue($parameter));
     }
 
     /**

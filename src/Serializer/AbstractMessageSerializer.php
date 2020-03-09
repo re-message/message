@@ -48,24 +48,27 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
 
     /**
      * @inheritDoc
-     * @throws FormatterException
      */
     public function supports($message): bool
     {
-        if (!$message instanceof MessageInterface) {
-            $array = $this->formatter->decode($message);
-            $type = $array['type'];
-        } else {
-            $array = $message->toArray();
-            $type = $message->getType();
-        }
+        try {
+            if (!$message instanceof MessageInterface) {
+                $array = $this->formatter->decode($message);
+                $type = $array['type'];
+            } else {
+                $array = $message->toArray();
+                $type = $message->getType();
+            }
 
-        if (!in_array($type, $this->getSupportTypes(), true)) {
+            if (!in_array($type, $this->getSupportTypes(), true)) {
+                return false;
+            }
+
+            $diff = array_diff_key(array_flip($this->getRequiredProperties()), $array);
+            return count($diff) === 0;
+        } catch (FormatterException $e) {
             return false;
         }
-
-        $diff = array_diff_key(array_flip($this->getRequiredProperties()), $array);
-        return count($diff) === 0;
     }
 
     /**

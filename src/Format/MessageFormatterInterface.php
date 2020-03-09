@@ -16,6 +16,8 @@
 
 namespace RM\Standard\Message\Format;
 
+use RM\Standard\Message\Exception\FormatterException;
+
 /**
  * Interface MessageFormatterInterface provides method for formatting message like JSON.
  * This class, that implements this, should NOT creates message objects.

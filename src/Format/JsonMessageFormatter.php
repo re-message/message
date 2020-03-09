@@ -16,6 +16,7 @@
 
 namespace RM\Standard\Message\Format;
 
+use RM\Standard\Message\Exception\FormatterException;
 use Webmozart\Json\JsonDecoder;
 use Webmozart\Json\JsonEncoder;
 use Webmozart\Json\ValidationFailedException;

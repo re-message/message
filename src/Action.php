@@ -16,6 +16,8 @@
 
 namespace RM\Standard\Message;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use RM\Standard\Message\Exception\InvalidParameterException;
 use RM\Standard\Message\Exception\UnknownParameterException;
 use RM\Standard\Message\Exception\NonSerializableTypeException;
@@ -33,13 +35,16 @@ use Symfony\Component\Validator\Validation;
  */
 abstract class Action implements ValidatableMessageInterface
 {
-    private array $parameters = [];
+    private Collection $parameters;
 
     /**
-     * Any data should NOT be passed with constructor.
+     * Any data should NOT be passed with the constructor.
      * Please use setters instead.
      */
-    final public function __construct() { }
+    final public function __construct()
+    {
+        $this->parameters = new ArrayCollection();
+    }
 
     /**
      * The unique name of action.
@@ -122,21 +127,21 @@ abstract class Action implements ValidatableMessageInterface
             throw new InvalidParameterException(static::getName(), $parameter, $value, $violation);
         }
 
-        $this->parameters[$parameter] = $value;
+        $this->parameters->set($parameter, $value);
         return true;
     }
 
     /**
      * Binds all parameters with validation.
      *
-     * @param array $parameters
+     * @param iterable $parameters
      *
      * @return bool
      * @throws UnknownParameterException
      * @throws NonSerializableTypeException
      * @throws InvalidParameterException
      */
-    final public function bindAll(array $parameters): bool
+    final public function bindAll(iterable $parameters): bool
     {
         foreach ($parameters as $parameter => $value) {
             if (false === $this->bind($parameter, $value)) {
@@ -156,7 +161,7 @@ abstract class Action implements ValidatableMessageInterface
      */
     final protected function getBoundValue(string $name)
     {
-        return $this->parameters[$name] ?? null;
+        return $this->parameters->get($name);
     }
 
     /**
@@ -168,7 +173,7 @@ abstract class Action implements ValidatableMessageInterface
      */
     final protected function hasBoundValue(string $name): bool
     {
-        return array_key_exists($name, $this->parameters);
+        return $this->parameters->containsKey($name);
     }
 
     /**
@@ -276,7 +281,7 @@ abstract class Action implements ValidatableMessageInterface
         return [
             'type' => $this->getType(),
             'name' => static::getName(),
-            'parameters' => $this->parameters
+            'parameters' => $this->parameters->toArray()
         ];
     }
 }

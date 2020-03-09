@@ -17,7 +17,7 @@
 namespace RM\Standard\Message;
 
 use RM\Standard\Message\Exception\InvalidParameterException;
-use RM\Standard\Message\Exception\MissingParameterException;
+use RM\Standard\Message\Exception\UnknownParameterException;
 use RM\Standard\Message\Exception\NonSerializableTypeException;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintViolationList;
@@ -102,14 +102,14 @@ abstract class Action implements ValidatableMessageInterface
      * @param mixed  $value
      *
      * @return bool
-     * @throws MissingParameterException
+     * @throws UnknownParameterException
      * @throws NonSerializableTypeException
      * @throws InvalidParameterException
      */
     final public function bind(string $parameter, $value): bool
     {
         if (!$this->hasParameter($parameter)) {
-            throw new MissingParameterException($parameter, static::getName());
+            throw new UnknownParameterException($parameter, static::getName());
         }
 
         if (is_object($value) || is_resource($value)) {
@@ -132,7 +132,7 @@ abstract class Action implements ValidatableMessageInterface
      * @param array $parameters
      *
      * @return bool
-     * @throws MissingParameterException
+     * @throws UnknownParameterException
      * @throws NonSerializableTypeException
      * @throws InvalidParameterException
      */

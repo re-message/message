@@ -24,7 +24,7 @@ use Throwable;
  * @package RM\Standard\Message\Exception
  * @author  h1karo <h1karo@outlook.com>
  */
-class MissingParameterException extends ExplanatoryException
+class UnknownParameterException extends ExplanatoryException
 {
     private const LINK_FORMAT = 'https://dev.relmsg.ru/api/action/%s';
 

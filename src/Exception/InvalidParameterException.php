@@ -29,6 +29,8 @@ class InvalidParameterException extends ExplanatoryException
 {
     private const LINK_FORMAT = 'https://dev.relmsg.ru/api/action/%s#parameter-%s';
 
+    private ConstraintViolationInterface $violation;
+
     public function __construct(
         string $action,
         string $parameter,
@@ -36,12 +38,14 @@ class InvalidParameterException extends ExplanatoryException
         ConstraintViolationInterface $violation,
         Throwable $previous = null
     ) {
-        $message = sprintf(
-            'This value is not compliance with parameter constraint: %s (%s).',
-            $violation->getMessage(),
-            $violation->getCode()
-        );
         $link = sprintf(self::LINK_FORMAT, $action, $parameter);
-        parent::__construct($message, $value, null, $link, $previous);
+        parent::__construct('This value does not satisfy the parameter constraint.', $value, null, $link, $previous);
+
+        $this->violation = $violation;
+    }
+
+    public function getViolation(): ConstraintViolationInterface
+    {
+        return $this->violation;
     }
 }

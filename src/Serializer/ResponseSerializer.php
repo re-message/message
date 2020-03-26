@@ -54,6 +54,9 @@ class ResponseSerializer extends AbstractMessageSerializer
         return [MessageType::RESPONSE];
     }
 
+    /**
+     * @inheritDoc
+     */
     protected function getRequiredProperties(): array
     {
         return ['content'];

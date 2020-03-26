@@ -54,6 +54,9 @@ class ErrorSerializer extends AbstractMessageSerializer
         return [MessageType::ERROR];
     }
 
+    /**
+     * @inheritDoc
+     */
     protected function getRequiredProperties(): array
     {
         return ['code', 'message'];

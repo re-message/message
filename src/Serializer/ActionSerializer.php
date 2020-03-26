@@ -95,6 +95,9 @@ class ActionSerializer extends AbstractMessageSerializer
         return [MessageType::ACTION];
     }
 
+    /**
+     * @inheritDoc
+     */
     protected function getRequiredProperties(): array
     {
         return ['name', 'parameters'];

@@ -54,6 +54,11 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
         try {
             if (!$message instanceof MessageInterface) {
                 $array = $this->formatter->decode($message);
+
+                if (!array_key_exists('type', $array)) {
+                    return false;
+                }
+
                 $type = $array['type'];
             } else {
                 $array = $message->toArray();

@@ -18,23 +18,19 @@ namespace RM\Standard\Message\Tests\Serializer;
 
 use Generator;
 use PHPUnit\Framework\TestCase;
-use RM\Standard\Message\ActionRegistry;
+use RM\Standard\Message\Action;
 use RM\Standard\Message\Error;
-use RM\Standard\Message\Exception\ExplanatoryException;
 use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\Response;
 use RM\Standard\Message\Serializer\ActionSerializer;
 use RM\Standard\Message\Serializer\MessageSerializerInterface;
-use RM\Standard\Message\Tests\Stubs\SomeAction;
 
 class ActionSerializerTest extends TestCase
 {
     public function testConstructor(): MessageSerializerInterface
     {
-        $registry = new ActionRegistry();
-        $registry->push(SomeAction::class);
-        $serializer = new ActionSerializer($registry);
+        $serializer = new ActionSerializer();
         $this->assertInstanceOf(ActionSerializer::class, $serializer);
         return $serializer;
     }
@@ -83,15 +79,13 @@ class ActionSerializerTest extends TestCase
 
     /**
      * @return Generator
-     * @throws ExplanatoryException
      */
     public function providePositiveMessages(): Generator
     {
-        $action = new SomeAction();
-        $action->bind('var', 'test');
+        $action = new Action('some.action', ['var' => 'test']);
         yield [$action];
 
-        $action->bind('another', 123);
+        $action = new Action('some.action', ['another' => 123]);
         yield [$action];
     }
 

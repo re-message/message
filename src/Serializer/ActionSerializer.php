@@ -17,14 +17,8 @@
 namespace RM\Standard\Message\Serializer;
 
 use RM\Standard\Message\Action;
-use RM\Standard\Message\ActionRegistry;
-use RM\Standard\Message\Exception\ActionNotFoundException;
 use RM\Standard\Message\Exception\FormatterException;
-use RM\Standard\Message\Exception\InvalidParameterException;
-use RM\Standard\Message\Exception\NonSerializableTypeException;
 use RM\Standard\Message\Exception\SerializerException;
-use RM\Standard\Message\Exception\UnknownParameterException;
-use RM\Standard\Message\Format\MessageFormatterInterface;
 use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 
@@ -37,26 +31,14 @@ use RM\Standard\Message\MessageType;
  */
 class ActionSerializer extends AbstractMessageSerializer
 {
-    private ActionRegistry $registry;
-
-    public function __construct(ActionRegistry $registry, MessageFormatterInterface $formatter = null)
-    {
-        parent::__construct($formatter);
-        $this->registry = $registry;
-    }
-
     /**
      * @inheritDoc
      *
      * @param string $message
      *
      * @return Action
-     * @throws ActionNotFoundException
      * @throws FormatterException
      * @throws SerializerException
-     * @throws InvalidParameterException
-     * @throws UnknownParameterException
-     * @throws NonSerializableTypeException
      */
     public function deserialize(string $message): MessageInterface
     {
@@ -65,26 +47,7 @@ class ActionSerializer extends AbstractMessageSerializer
             throw new SerializerException(sprintf('%s can not deserialize this message.', static::class));
         }
 
-        $name = $array['name'];
-        $parameters = $array['parameters'];
-
-        if (!$this->registry->has($name)) {
-            throw new ActionNotFoundException($name);
-        }
-
-        $class = $this->registry->get($name);
-
-        /** @var Action $action */
-        $action = new $class();
-        $action->bindAll($parameters);
-
-        $violations = $action->validateAll();
-        if ($violations->count() > 0) {
-            $violation = $violations->get(0);
-            throw new InvalidParameterException($action::getName(), null, null, $violation);
-        }
-
-        return $action;
+        return new Action($array['name'], $array['parameters']);
     }
 
     /**

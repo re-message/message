@@ -3,7 +3,7 @@
  * This file is a part of Relations Messenger API Message Standard.
  * This package is a part of Relations Messenger.
  *
- * @link      https://gitlab.com/relmsg/message
+ * @link      https://github.com/relmsg/message
  * @link      https://dev.relmsg.ru/packages/message
  * @copyright Copyright (c) 2018-2020 Relations Messenger
  * @author    h1karo <h1karo@outlook.com>

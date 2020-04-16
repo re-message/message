@@ -47,7 +47,7 @@ class ActionSerializer extends AbstractMessageSerializer
             throw new SerializerException(sprintf('%s can not deserialize this message.', static::class));
         }
 
-        return new Action($array['name'], $array['parameters']);
+        return new Action($array['name'], $array['parameters'] ?? []);
     }
 
     /**
@@ -63,6 +63,6 @@ class ActionSerializer extends AbstractMessageSerializer
      */
     protected function getRequiredProperties(): array
     {
-        return ['name', 'parameters'];
+        return ['name'];
     }
 }

@@ -30,7 +30,7 @@ use RM\Standard\Message\MessageInterface;
 class ChainMessageSerializer implements MessageSerializerInterface
 {
     /**
-     * @var MessageSerializerInterface[]|Collection
+     * @var Collection|MessageSerializerInterface[]
      */
     protected Collection $serializers;
 
@@ -41,7 +41,11 @@ class ChainMessageSerializer implements MessageSerializerInterface
      */
     public function __construct(array $serializers = [])
     {
-        $this->serializers = new ArrayCollection($serializers);
+        $this->serializers = new ArrayCollection();
+
+        foreach ($serializers as $serializer) {
+            $this->pushSerializer($serializer);
+        }
     }
 
     public function pushSerializer(MessageSerializerInterface $serializer): void

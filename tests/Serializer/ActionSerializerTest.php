@@ -16,7 +16,6 @@
 
 namespace RM\Standard\Message\Tests\Serializer;
 
-use Generator;
 use PHPUnit\Framework\TestCase;
 use RM\Standard\Message\Action;
 use RM\Standard\Message\Error;
@@ -77,10 +76,7 @@ class ActionSerializerTest extends TestCase
         $serializer->deserialize($serialized);
     }
 
-    /**
-     * @return Generator
-     */
-    public function providePositiveMessages(): Generator
+    public function providePositiveMessages(): iterable
     {
         $action = new Action('some.action', ['var' => 'test']);
         yield [$action];
@@ -89,7 +85,7 @@ class ActionSerializerTest extends TestCase
         yield [$action];
     }
 
-    public function provideNegativeMessages(): Generator
+    public function provideNegativeMessages(): iterable
     {
         yield [new Response(['oof'])];
         yield [new Error(1, 'Oops i did it again')];

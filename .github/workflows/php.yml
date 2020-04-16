@@ -22,3 +22,8 @@ jobs:
 
     - name: Run test suite
       run: composer run-script test
+
+    -   uses: actions/upload-artifact@v1
+        with:
+          name: Coverage report
+          path: coverage

@@ -1,12 +1,12 @@
 <?php
-/**
- * This file is a part of Relations Messenger API Message Standard.
+/*
+ * This file is a part of Relations Messenger Message Standard.
  * This package is a part of Relations Messenger.
  *
- * @link      https://github.com/relmsg/message
- * @link      https://dev.relmsg.ru/packages/message
+ * @see       https://github.com/relmsg/message
+ * @see       https://dev.relmsg.ru/packages/message
  * @copyright Copyright (c) 2018-2020 Relations Messenger
- * @author    h1karo <h1karo@outlook.com>
+ * @author    Oleg Kozlov <h1karo@relmsg.ru>
  * @license   Apache License 2.0
  * @license   https://legal.relmsg.ru/licenses/message
  *
@@ -22,7 +22,7 @@ use RM\Standard\Message\MessageInterface;
  * Interface MessageSerializerInterface
  *
  * @package RM\Standard\Message\Serializer
- * @author  h1karo <h1karo@outlook.com>
+ * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 interface MessageSerializerInterface
 {

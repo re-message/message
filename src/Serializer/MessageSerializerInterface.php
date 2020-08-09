@@ -19,9 +19,8 @@ namespace RM\Standard\Message\Serializer;
 use RM\Standard\Message\MessageInterface;
 
 /**
- * Interface MessageSerializerInterface
+ * Interface MessageSerializerInterface.
  *
- * @package RM\Standard\Message\Serializer
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 interface MessageSerializerInterface

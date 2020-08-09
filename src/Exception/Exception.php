@@ -19,9 +19,8 @@ namespace RM\Standard\Message\Exception;
 use Throwable;
 
 /**
- * Class Exception
+ * Class Exception.
  *
- * @package RM\Standard\Message\Exception
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 class Exception extends \Exception

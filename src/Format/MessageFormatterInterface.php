@@ -22,7 +22,6 @@ use RM\Standard\Message\Exception\FormatterException;
  * Interface MessageFormatterInterface provides method for formatting message like JSON.
  * This class, that implements this, should NOT creates message objects.
  *
- * @package RM\Standard\Message\Format
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 interface MessageFormatterInterface
@@ -32,8 +31,9 @@ interface MessageFormatterInterface
      *
      * @param array $message
      *
-     * @return string
      * @throws FormatterException
+     *
+     * @return string
      */
     public function encode(array $message): string;
 
@@ -42,8 +42,9 @@ interface MessageFormatterInterface
      *
      * @param string $message
      *
-     * @return array
      * @throws FormatterException
+     *
+     * @return array
      */
     public function decode(string $message): array;
 }

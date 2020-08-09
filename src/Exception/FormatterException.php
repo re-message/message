@@ -17,12 +17,10 @@
 namespace RM\Standard\Message\Exception;
 
 /**
- * Class FormatterException
+ * Class FormatterException.
  *
- * @package RM\Standard\Message\Exception
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 class FormatterException extends Exception
 {
-
 }

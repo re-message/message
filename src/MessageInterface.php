@@ -17,17 +17,17 @@
 namespace RM\Standard\Message;
 
 /**
- * Class Message
+ * Class Message.
  *
- * @package RM\Standard\Message
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 interface MessageInterface
 {
     /**
-     * Type of the message
+     * Type of the message.
      *
      * @return string
+     *
      * @see MessageType
      */
     public function getType(): string;

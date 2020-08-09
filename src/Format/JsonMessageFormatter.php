@@ -22,9 +22,8 @@ use Webmozart\Json\JsonEncoder;
 use Webmozart\Json\ValidationFailedException;
 
 /**
- * Class JsonMessageFormatter
+ * Class JsonMessageFormatter.
  *
- * @package RM\Standard\Message
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 class JsonMessageFormatter implements MessageFormatterInterface
@@ -40,7 +39,7 @@ class JsonMessageFormatter implements MessageFormatterInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function encode(array $message): string
     {
@@ -52,7 +51,7 @@ class JsonMessageFormatter implements MessageFormatterInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function decode(string $message): array
     {

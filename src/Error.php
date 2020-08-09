@@ -17,10 +17,10 @@
 namespace RM\Standard\Message;
 
 /**
- * Class Error
+ * Class Error.
  *
- * @package RM\Standard\Message
  * @author Oleg Kozlov <h1karo@relmsg.ru>
+ *
  * @see     MessageType::ERROR
  */
 class Error implements MessageInterface
@@ -45,7 +45,7 @@ class Error implements MessageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -53,14 +53,14 @@ class Error implements MessageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     final public function toArray(): array
     {
         return [
             'type' => $this->getType(),
             'code' => $this->getCode(),
-            'message' => $this->getMessage()
+            'message' => $this->getMessage(),
         ];
     }
 }

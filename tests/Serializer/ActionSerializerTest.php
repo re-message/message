@@ -25,12 +25,17 @@ use RM\Standard\Message\Response;
 use RM\Standard\Message\Serializer\ActionSerializer;
 use RM\Standard\Message\Serializer\MessageSerializerInterface;
 
+/**
+ * @internal
+ * @coversNothing
+ */
 class ActionSerializerTest extends TestCase
 {
     public function testConstructor(): MessageSerializerInterface
     {
         $serializer = new ActionSerializer();
-        $this->assertInstanceOf(ActionSerializer::class, $serializer);
+        self::assertInstanceOf(ActionSerializer::class, $serializer);
+
         return $serializer;
     }
 
@@ -44,7 +49,7 @@ class ActionSerializerTest extends TestCase
     public function testSerialize(MessageInterface $message, MessageSerializerInterface $serializer): void
     {
         $serialized = $serializer->serialize($message);
-        $this->assertIsString($serialized);
+        self::assertIsString($serialized);
     }
 
     /**
@@ -58,8 +63,8 @@ class ActionSerializerTest extends TestCase
     {
         $serialized = $serializer->serialize($message);
         $m = $serializer->deserialize($serialized);
-        $this->assertEquals($message->getType(), $m->getType());
-        $this->assertEquals($message->toArray(), $m->toArray());
+        self::assertEquals($message->getType(), $m->getType());
+        self::assertEquals($message->toArray(), $m->toArray());
     }
 
     /**

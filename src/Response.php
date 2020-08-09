@@ -17,10 +17,10 @@
 namespace RM\Standard\Message;
 
 /**
- * Class Response
+ * Class Response.
  *
- * @package RM\Standard\Message
  * @author Oleg Kozlov <h1karo@relmsg.ru>
+ *
  * @see     MessageType::RESPONSE
  */
 class Response implements MessageInterface
@@ -38,7 +38,7 @@ class Response implements MessageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -46,13 +46,13 @@ class Response implements MessageInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function toArray(): array
     {
         return [
             'type' => $this->getType(),
-            'content' => $this->getContent()
+            'content' => $this->getContent(),
         ];
     }
 }

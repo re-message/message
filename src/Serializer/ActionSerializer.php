@@ -23,22 +23,23 @@ use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 
 /**
- * Class ActionSerializer
+ * Class ActionSerializer.
  *
- * @package RM\Standard\Message\Serializer
  * @author Oleg Kozlov <h1karo@relmsg.ru>
+ *
  * @see     MessageType::ACTION
  */
 class ActionSerializer extends AbstractMessageSerializer
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      *
      * @param string $message
      *
-     * @return Action
      * @throws FormatterException
      * @throws SerializerException
+     *
+     * @return Action
      */
     public function deserialize(string $message): MessageInterface
     {
@@ -51,7 +52,7 @@ class ActionSerializer extends AbstractMessageSerializer
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function getSupportTypes(): array
     {
@@ -59,7 +60,7 @@ class ActionSerializer extends AbstractMessageSerializer
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function getRequiredProperties(): array
     {

@@ -20,10 +20,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * Class Action
+ * Class Action.
  *
- * @package RM\Standard\Message
  * @author Oleg Kozlov <h1karo@relmsg.ru>
+ *
  * @see     MessageType::ACTION
  */
 class Action implements ActionInterface
@@ -41,6 +41,7 @@ class Action implements ActionInterface
      * The unique name of action.
      *
      * @return string
+     *
      * @see https://dev.relmsg.ru/api/actions
      */
     public function getName(): string
@@ -49,7 +50,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     final public function getType(): string
     {
@@ -73,7 +74,7 @@ class Action implements ActionInterface
      *
      * @param string $name
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     public function getValue(string $name)
     {
@@ -93,14 +94,14 @@ class Action implements ActionInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     final public function toArray(): array
     {
         return [
             'type' => $this->getType(),
             'name' => $this->getName(),
-            'parameters' => $this->parameters->toArray()
+            'parameters' => $this->parameters->toArray(),
         ];
     }
 }

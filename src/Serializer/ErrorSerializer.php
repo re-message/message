@@ -23,16 +23,17 @@ use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 
 /**
- * Class ResponseSerializer
+ * Class ResponseSerializer.
  *
- * @package RM\Standard\Message\Serializer
  * @author Oleg Kozlov <h1karo@relmsg.ru>
+ *
  * @see     MessageType::ERROR
  */
 class ErrorSerializer extends AbstractMessageSerializer
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
+     *
      * @throws FormatterException
      * @throws SerializerException
      */
@@ -47,7 +48,7 @@ class ErrorSerializer extends AbstractMessageSerializer
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function getSupportTypes(): array
     {
@@ -55,7 +56,7 @@ class ErrorSerializer extends AbstractMessageSerializer
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function getRequiredProperties(): array
     {

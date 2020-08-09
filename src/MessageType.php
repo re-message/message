@@ -19,9 +19,8 @@ namespace RM\Standard\Message;
 use ReflectionClass;
 
 /**
- * Enum MessageType
+ * Enum MessageType.
  *
- * @package RM\Standard\Message
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 class MessageType
@@ -73,7 +72,7 @@ class MessageType
     public const COMMENT = 'comment';
 
     /**
-     * Checks if this type of message exists
+     * Checks if this type of message exists.
      *
      * @param string $type guess message type
      *
@@ -82,17 +81,19 @@ class MessageType
     public static function exists(string $type): bool
     {
         $type = mb_strtoupper($type);
+
         return in_array($type, self::all(), true);
     }
 
     /**
-     * Returns list of all message types
+     * Returns list of all message types.
      *
      * @return array
      */
     public static function all(): array
     {
         $reflect = new ReflectionClass(static::class);
+
         return array_keys($reflect->getConstants());
     }
 }

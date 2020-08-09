@@ -17,10 +17,10 @@
 namespace RM\Standard\Message;
 
 /**
- * Interface ActionInterface
+ * Interface ActionInterface.
  *
- * @package RM\Standard\Message
  * @author Oleg Kozlov <h1karo@relmsg.ru>
+ *
  * @see     MessageType::ACTION
  */
 interface ActionInterface extends MessageInterface
@@ -29,6 +29,7 @@ interface ActionInterface extends MessageInterface
      * The unique name of action.
      *
      * @return string
+     *
      * @see https://dev.relmsg.ru/api/actions
      */
     public function getName(): string;
@@ -47,7 +48,7 @@ interface ActionInterface extends MessageInterface
      *
      * @param string $name
      *
-     * @return mixed|null
+     * @return null|mixed
      */
     public function getValue(string $name);
 

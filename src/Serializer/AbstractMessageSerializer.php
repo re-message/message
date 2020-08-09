@@ -23,9 +23,8 @@ use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 
 /**
- * Class AbstractMessageSerializer
+ * Class AbstractMessageSerializer.
  *
- * @package RM\Standard\Message\Serializer
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 abstract class AbstractMessageSerializer implements MessageSerializerInterface
@@ -38,7 +37,8 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
+     *
      * @throws FormatterException
      */
     public function serialize(MessageInterface $message): string
@@ -47,7 +47,7 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function supports($message): bool
     {
@@ -70,7 +70,8 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
             }
 
             $diff = array_diff_key(array_flip($this->getRequiredProperties()), $array);
-            return count($diff) === 0;
+
+            return 0 === count($diff);
         } catch (FormatterException $e) {
             return false;
         }

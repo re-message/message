@@ -34,6 +34,6 @@
         "monolog/monolog": "^2.0.2"
     },
     "scripts": {
-        "test": "vendor/bin/phpunit"
+        "test": "phpunit"
     }
 }

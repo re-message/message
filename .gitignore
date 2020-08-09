@@ -1,5 +1,10 @@
 /.idea
-/coverage
-/vendor
+
 composer.lock
+/vendor
+
 .phpunit.result.cache
+/phpunit.xml
+/coverage
+
+.php_cs.cache

@@ -30,10 +30,14 @@
         }
     },
     "require-dev": {
+        "monolog/monolog": "^2.0.2",
+
         "phpunit/phpunit": "^9.0",
-        "monolog/monolog": "^2.0.2"
+        "friendsofphp/php-cs-fixer": "^2.16"
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "lint": "php-cs-fixer fix --show-progress=dots",
+        "lint:ci": "php-cs-fixer fix --dry-run -v --show-progress=dots --diff-format=udiff"
     }
 }

@@ -2,13 +2,13 @@
 
 This package defines the rules and formats for communication between clients and servers that are part of Relations Messenger.
 
-Standard based on JSON format and created to implement a [JSON-pure API](https://mmikowski.github.io/json-pure/). This package uses the `webmozart/json` for encoding and decoding JSON.
+Standard based on JSON format and created to implement a [JSON-pure API](https://mmikowski.github.io/json-pure/). This package uses the `symfony/serializer` for encoding and decoding JSON.
 
 The `relmsg/client` and `relmsg/core` based on this standard.
 
 ## Requirements
 
-PHP 7.4+ with these extensions:
+PHP 8.0+ with these extensions:
 1. json
 1. mbstring
 

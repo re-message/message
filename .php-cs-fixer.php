@@ -5,11 +5,12 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
 ;
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+return $config
     ->setRules(
         [
+            '@PSR12' => true,
             '@Symfony' => true,
-            '@PSR2' => true,
             '@PhpCsFixer' => true,
             '@DoctrineAnnotation' => true,
             'ordered_class_elements' => false,
@@ -21,4 +22,5 @@ return PhpCsFixer\Config::create()
         ]
     )
     ->setRiskyAllowed(true)
-    ->setFinder($finder);
+    ->setFinder($finder)
+;

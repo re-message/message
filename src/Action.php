@@ -20,11 +20,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * Class Action.
+ * Class Action is a read-only representation.
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
- * @see     MessageType::ACTION
+ * @see MessageType::ACTION
  */
 class Action implements ActionInterface
 {
@@ -38,11 +38,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * The unique name of action.
-     *
-     * @return string
-     *
-     * @see https://dev.relmsg.ru/api/actions
+     * {@inheritDoc}
      */
     public function getName(): string
     {
@@ -58,11 +54,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * Checks the existence of parameter by name.
-     *
-     * @param string $name
-     *
-     * @return bool
+     * {@inheritDoc}
      */
     public function hasParameter(string $name): bool
     {
@@ -70,11 +62,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * Returns the current parameter value or or null.
-     *
-     * @param string $name
-     *
-     * @return null|mixed
+     * {@inheritDoc}
      */
     public function getValue(string $name)
     {
@@ -82,11 +70,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * Checks the existence of value for parameter.
-     *
-     * @param string $name
-     *
-     * @return bool
+     * {@inheritDoc}
      */
     public function hasValue(string $name): bool
     {

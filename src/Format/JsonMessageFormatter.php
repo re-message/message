@@ -17,9 +17,8 @@
 namespace RM\Standard\Message\Format;
 
 use RM\Standard\Message\Exception\FormatterException;
-use Webmozart\Json\JsonDecoder;
-use Webmozart\Json\JsonEncoder;
-use Webmozart\Json\ValidationFailedException;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 
 /**
  * Class JsonMessageFormatter.
@@ -29,13 +28,10 @@ use Webmozart\Json\ValidationFailedException;
 class JsonMessageFormatter implements MessageFormatterInterface
 {
     private JsonEncoder $encoder;
-    private JsonDecoder $decoder;
 
     public function __construct()
     {
         $this->encoder = new JsonEncoder();
-        $this->decoder = new JsonDecoder();
-        $this->decoder->setObjectDecoding(JsonDecoder::ASSOC_ARRAY);
     }
 
     /**
@@ -44,8 +40,8 @@ class JsonMessageFormatter implements MessageFormatterInterface
     public function encode(array $message): string
     {
         try {
-            return $this->encoder->encode($message);
-        } catch (ValidationFailedException $e) {
+            return $this->encoder->encode($message, JsonEncoder::FORMAT);
+        } catch (UnexpectedValueException $e) {
             throw new FormatterException(sprintf('Unable to encode passed message into JSON: %s', $e->getMessage()));
         }
     }
@@ -56,8 +52,8 @@ class JsonMessageFormatter implements MessageFormatterInterface
     public function decode(string $message): array
     {
         try {
-            return $this->decoder->decode($message);
-        } catch (ValidationFailedException $e) {
+            return $this->encoder->decode($message, JsonEncoder::FORMAT);
+        } catch (UnexpectedValueException $e) {
             throw new FormatterException(sprintf('Unable to decode passed message from JSON: %s', $e->getMessage()));
         }
     }

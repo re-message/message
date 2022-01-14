@@ -33,6 +33,7 @@ class MessageType
      * @see Action
      */
     public const ACTION = 'action';
+
     /**
      * Response from server on client action message.
      * Sent only by server.
@@ -40,6 +41,7 @@ class MessageType
      * @see Response
      */
     public const RESPONSE = 'response';
+
     /**
      * Subscribe on some event. Without this server will not send event messages.
      * Sent only by client.
@@ -47,6 +49,7 @@ class MessageType
      * @see Subscription
      */
     public const SUBSCRIPTION = 'subscription';
+
     /**
      * Means that a certain event has occurred on the server that the client MAY process.
      * The client cannot send this type of message. They will be ignored by the server.
@@ -55,6 +58,7 @@ class MessageType
      * @see Event
      */
     public const EVENT = 'event';
+
     /**
      * Means that an error occurred while processing the last message from the client.
      * The client cannot send this type of message. They will be ignored by the server.
@@ -62,6 +66,7 @@ class MessageType
      * @see Error
      */
     public const ERROR = 'error';
+
     /**
      * Means server comment. No processing required. Such messages will simply be logged and nothing more.
      * The client cannot send this type of message. They will be ignored by the server.

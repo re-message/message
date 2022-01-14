@@ -5,7 +5,7 @@
  *
  * @see       https://github.com/relmsg/message
  * @see       https://dev.relmsg.ru/packages/message
- * @copyright Copyright (c) 2018-2020 Relations Messenger
+ * @copyright Copyright (c) 2018-2022 Relations Messenger
  * @author    Oleg Kozlov <h1karo@relmsg.ru>
  * @license   Apache License 2.0
  * @license   https://legal.relmsg.ru/licenses/message

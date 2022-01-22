@@ -16,12 +16,14 @@
 
 namespace RM\Standard\Message;
 
+use JsonSerializable;
+
 /**
  * Enum MessageType.
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
-enum MessageType: string
+enum MessageType: string implements JsonSerializable
 {
     /**
      * Main message type. Means the requirement to perform some action.
@@ -73,4 +75,9 @@ enum MessageType: string
      * @see Comment
      */
     case COMMENT = 'comment';
+
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
 }

@@ -52,17 +52,14 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     public function supports(MessageInterface|string $message): bool
     {
         try {
-            if (!$message instanceof MessageInterface) {
-                $array = $this->formatter->decode($message);
+            $array = $this->convertToArray($message);
+            if (!array_key_exists('type', $array)) {
+                return false;
+            }
 
-                if (!array_key_exists('type', $array)) {
-                    return false;
-                }
-
-                $type = MessageType::tryFrom($array['type']);
-            } else {
-                $array = $message->toArray();
-                $type = $message->getType();
+            $type = MessageType::tryFrom($array['type']);
+            if (null === $type) {
+                return false;
             }
 
             if (!in_array($type, $this->getSupportTypes(), true)) {
@@ -75,6 +72,18 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
         } catch (FormatterException) {
             return false;
         }
+    }
+
+    /**
+     * @throws FormatterException
+     */
+    private function convertToArray(MessageInterface|string $message): array
+    {
+        if ($message instanceof MessageInterface) {
+            return $message->toArray();
+        }
+
+        return $this->formatter->decode($message);
     }
 
     /**

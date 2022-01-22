@@ -2,6 +2,7 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->exclude('vendor')
+    ->notPath('src/MessageType.php')
     ->in(__DIR__)
 ;
 
@@ -13,6 +14,9 @@ return $config
             '@Symfony' => true,
             '@PhpCsFixer' => true,
             '@DoctrineAnnotation' => true,
+            '@PHP80Migration:risky' => true,
+            '@PHP81Migration' => true,
+            'declare_strict_types' => false,
             'ordered_class_elements' => false,
             'no_superfluous_phpdoc_tags' => false,
             'strict_param' => true,

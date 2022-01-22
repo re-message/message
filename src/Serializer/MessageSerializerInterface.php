@@ -48,5 +48,5 @@ interface MessageSerializerInterface
      *
      * @return bool
      */
-    public function supports($message): bool;
+    public function supports(MessageInterface|string $message): bool;
 }

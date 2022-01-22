@@ -29,13 +29,11 @@ use RM\Standard\Message\MessageInterface;
 class ChainMessageSerializer implements MessageSerializerInterface
 {
     /**
-     * @var Collection|MessageSerializerInterface[]
+     * @var Collection<MessageSerializerInterface>
      */
     protected Collection $serializers;
 
     /**
-     * ChainMessageSerializer constructor.
-     *
      * @param MessageSerializerInterface[] $serializers
      */
     public function __construct(array $serializers = [])
@@ -75,11 +73,11 @@ class ChainMessageSerializer implements MessageSerializerInterface
     /**
      * {@inheritdoc}
      */
-    public function supports($message): bool
+    public function supports(MessageInterface|string $message): bool
     {
         try {
             return null !== $this->getMessageSerializer($message);
-        } catch (SerializerException $e) {
+        } catch (SerializerException) {
             return false;
         }
     }
@@ -91,7 +89,7 @@ class ChainMessageSerializer implements MessageSerializerInterface
      *
      * @return MessageSerializerInterface
      */
-    protected function getMessageSerializer($message): MessageSerializerInterface
+    protected function getMessageSerializer(MessageInterface|string $message): MessageSerializerInterface
     {
         foreach ($this->serializers as $serializer) {
             if ($serializer->supports($message)) {

@@ -50,7 +50,7 @@ interface ActionInterface extends MessageInterface
      *
      * @return null|mixed
      */
-    public function getValue(string $name);
+    public function getValue(string $name): mixed;
 
     /**
      * Checks the existence of value or default value for parameter.

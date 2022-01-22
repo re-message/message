@@ -64,7 +64,7 @@ class Action implements ActionInterface
     /**
      * {@inheritDoc}
      */
-    public function getValue(string $name)
+    public function getValue(string $name): mixed
     {
         return $this->parameters->get($name);
     }

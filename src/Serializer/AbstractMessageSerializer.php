@@ -49,7 +49,7 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     /**
      * {@inheritdoc}
      */
-    public function supports($message): bool
+    public function supports(MessageInterface|string $message): bool
     {
         try {
             if (!$message instanceof MessageInterface) {
@@ -72,7 +72,7 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
             $diff = array_diff_key(array_flip($this->getRequiredProperties()), $array);
 
             return 0 === count($diff);
-        } catch (FormatterException $e) {
+        } catch (FormatterException) {
             return false;
         }
     }
@@ -80,16 +80,12 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     /**
      * List of message types supports by serializer.
      * Full message type list available as constants of class {@see MessageType}.
-     *
-     * @return array
      */
     abstract protected function getSupportTypes(): array;
 
     /**
      * List of required properties. If one of these properties does not exist,
      * {@see supports()} will return false.
-     *
-     * @return array
      */
     protected function getRequiredProperties(): array
     {

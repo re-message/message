@@ -80,6 +80,8 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     /**
      * List of message types supports by serializer.
      * Full message type list available as constants of class {@see MessageType}.
+     *
+     * @return MessageType[]
      */
     abstract protected function getSupportTypes(): array;
 

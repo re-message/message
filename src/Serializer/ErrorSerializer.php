@@ -27,7 +27,7 @@ use RM\Standard\Message\MessageType;
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
- * @see     MessageType::ERROR
+ * @see MessageType::ERROR
  */
 class ErrorSerializer extends AbstractMessageSerializer
 {

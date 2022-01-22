@@ -21,7 +21,7 @@ namespace RM\Standard\Message;
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
- * @see     MessageType::ACTION
+ * @see MessageType::ACTION
  */
 interface ActionInterface extends MessageInterface
 {

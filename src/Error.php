@@ -21,7 +21,7 @@ namespace RM\Standard\Message;
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
- * @see     MessageType::ERROR
+ * @see MessageType::ERROR
  */
 class Error implements MessageInterface
 {
@@ -47,7 +47,7 @@ class Error implements MessageInterface
     /**
      * {@inheritdoc}
      */
-    public function getType(): string
+    public function getType(): MessageType
     {
         return MessageType::ERROR;
     }

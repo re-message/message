@@ -40,7 +40,7 @@ class Response implements MessageInterface
     /**
      * {@inheritdoc}
      */
-    public function getType(): string
+    public function getType(): MessageType
     {
         return MessageType::RESPONSE;
     }

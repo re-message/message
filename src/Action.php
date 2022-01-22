@@ -48,7 +48,7 @@ class Action implements ActionInterface
     /**
      * {@inheritdoc}
      */
-    final public function getType(): string
+    final public function getType(): MessageType
     {
         return MessageType::ACTION;
     }

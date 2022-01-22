@@ -27,7 +27,7 @@ use RM\Standard\Message\MessageType;
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
- * @see     MessageType::ACTION
+ * @see MessageType::ACTION
  */
 class ActionSerializer extends AbstractMessageSerializer
 {

@@ -25,17 +25,11 @@ interface MessageInterface
 {
     /**
      * Type of the message.
-     *
-     * @return string
-     *
-     * @see MessageType
      */
-    public function getType(): string;
+    public function getType(): MessageType;
 
     /**
      * Converts message into array.
-     *
-     * @return array
      */
     public function toArray(): array;
 }

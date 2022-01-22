@@ -49,20 +49,17 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     /**
      * {@inheritdoc}
      */
-    public function supports($message): bool
+    public function supports(MessageInterface|string $message): bool
     {
         try {
-            if (!$message instanceof MessageInterface) {
-                $array = $this->formatter->decode($message);
+            $array = $this->convertToArray($message);
+            if (!array_key_exists('type', $array)) {
+                return false;
+            }
 
-                if (!array_key_exists('type', $array)) {
-                    return false;
-                }
-
-                $type = $array['type'];
-            } else {
-                $array = $message->toArray();
-                $type = $message->getType();
+            $type = MessageType::tryFrom($array['type']);
+            if (null === $type) {
+                return false;
             }
 
             if (!in_array($type, $this->getSupportTypes(), true)) {
@@ -72,24 +69,34 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
             $diff = array_diff_key(array_flip($this->getRequiredProperties()), $array);
 
             return 0 === count($diff);
-        } catch (FormatterException $e) {
+        } catch (FormatterException) {
             return false;
         }
+    }
+
+    /**
+     * @throws FormatterException
+     */
+    private function convertToArray(MessageInterface|string $message): array
+    {
+        if ($message instanceof MessageInterface) {
+            return $message->toArray();
+        }
+
+        return $this->formatter->decode($message);
     }
 
     /**
      * List of message types supports by serializer.
      * Full message type list available as constants of class {@see MessageType}.
      *
-     * @return array
+     * @return MessageType[]
      */
     abstract protected function getSupportTypes(): array;
 
     /**
      * List of required properties. If one of these properties does not exist,
      * {@see supports()} will return false.
-     *
-     * @return array
      */
     protected function getRequiredProperties(): array
     {

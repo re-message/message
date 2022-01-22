@@ -48,7 +48,7 @@ class Action implements ActionInterface
     /**
      * {@inheritdoc}
      */
-    final public function getType(): string
+    final public function getType(): MessageType
     {
         return MessageType::ACTION;
     }
@@ -64,7 +64,7 @@ class Action implements ActionInterface
     /**
      * {@inheritDoc}
      */
-    public function getValue(string $name)
+    public function getValue(string $name): mixed
     {
         return $this->parameters->get($name);
     }

@@ -8,7 +8,7 @@ The `relmsg/client` and `relmsg/core` based on this standard.
 
 ## Requirements
 
-PHP 8.0+ with these extensions:
+PHP 8.1+ with these extensions:
 1. json
 1. mbstring
 

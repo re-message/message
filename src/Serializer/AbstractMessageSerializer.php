@@ -59,7 +59,7 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
                     return false;
                 }
 
-                $type = $array['type'];
+                $type = MessageType::tryFrom($array['type']);
             } else {
                 $array = $message->toArray();
                 $type = $message->getType();

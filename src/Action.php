@@ -83,7 +83,7 @@ class Action implements ActionInterface
     final public function toArray(): array
     {
         return [
-            'type' => $this->getType(),
+            'type' => $this->getType()->value,
             'name' => $this->getName(),
             'parameters' => $this->parameters->toArray(),
         ];

@@ -51,7 +51,7 @@ class Response implements MessageInterface
     public function toArray(): array
     {
         return [
-            'type' => $this->getType(),
+            'type' => $this->getType()->value,
             'content' => $this->getContent(),
         ];
     }

@@ -58,7 +58,7 @@ class Error implements MessageInterface
     final public function toArray(): array
     {
         return [
-            'type' => $this->getType(),
+            'type' => $this->getType()->value,
             'code' => $this->getCode(),
             'message' => $this->getMessage(),
         ];

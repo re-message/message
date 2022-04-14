@@ -33,7 +33,8 @@ class Action implements ActionInterface
     public function __construct(
         private readonly string $name,
         array $parameters = [],
-        private readonly string|null $id = null
+        private readonly string|null $id = null,
+        private readonly string|null $token = null
     ) {
         $this->parameters = new ArrayCollection($parameters);
     }
@@ -87,6 +88,14 @@ class Action implements ActionInterface
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function getToken(): string|null
+    {
+        return $this->token;
+    }
+
+    /**
      * {@inheritdoc}
      */
     final public function toArray(): array
@@ -96,6 +105,7 @@ class Action implements ActionInterface
             'type' => $this->getType()->value,
             'name' => $this->getName(),
             'parameters' => $this->parameters->toArray(),
+            'token' => $this->getToken(),
         ];
 
         $notNull = static fn (mixed $value) => null !== $value;

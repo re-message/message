@@ -28,14 +28,13 @@ use Doctrine\Common\Collections\Collection;
  */
 class Action implements ActionInterface
 {
-    private string|null $id;
-    private string $name;
-    private Collection $parameters;
+    private readonly Collection $parameters;
 
-    public function __construct(string $name, array $parameters = [], string $id = null)
-    {
-        $this->id = $id;
-        $this->name = $name;
+    public function __construct(
+        private readonly string $name,
+        array $parameters = [],
+        private readonly string|null $id = null
+    ) {
         $this->parameters = new ArrayCollection($parameters);
     }
 

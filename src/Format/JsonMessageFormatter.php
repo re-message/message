@@ -33,7 +33,7 @@ class JsonMessageFormatter implements MessageFormatterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function encode(array $message): string
     {
@@ -45,7 +45,7 @@ class JsonMessageFormatter implements MessageFormatterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function decode(string $message): array
     {

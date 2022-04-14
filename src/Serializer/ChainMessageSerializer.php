@@ -49,7 +49,7 @@ class ChainMessageSerializer implements MessageSerializerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @throws SerializerException
      */
@@ -59,7 +59,7 @@ class ChainMessageSerializer implements MessageSerializerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @throws SerializerException
      */
@@ -69,7 +69,7 @@ class ChainMessageSerializer implements MessageSerializerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function supports(MessageInterface|string $message): bool
     {

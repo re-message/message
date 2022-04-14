@@ -30,7 +30,7 @@ class Response implements IdentifiableMessageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getType(): MessageType
     {
@@ -38,7 +38,7 @@ class Response implements IdentifiableMessageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getId(): string|null
     {
@@ -51,7 +51,7 @@ class Response implements IdentifiableMessageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function toArray(): array
     {

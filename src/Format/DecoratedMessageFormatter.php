@@ -27,7 +27,7 @@ abstract class DecoratedMessageFormatter implements MessageFormatterInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function encode(array $message): string
     {
@@ -35,7 +35,7 @@ abstract class DecoratedMessageFormatter implements MessageFormatterInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function decode(string $message): array
     {

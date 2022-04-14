@@ -33,7 +33,7 @@ class Error implements MessageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getType(): MessageType
     {
@@ -51,7 +51,7 @@ class Error implements MessageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     final public function toArray(): array
     {

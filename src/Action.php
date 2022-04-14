@@ -40,7 +40,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     final public function getType(): MessageType
     {
@@ -48,7 +48,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getId(): string|null
     {
@@ -56,7 +56,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getName(): string
     {
@@ -64,7 +64,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function hasParameter(string $name): bool
     {
@@ -72,7 +72,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getValue(string $name): mixed
     {
@@ -80,7 +80,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function hasValue(string $name): bool
     {
@@ -88,7 +88,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getToken(): string|null
     {
@@ -96,7 +96,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     final public function toArray(): array
     {

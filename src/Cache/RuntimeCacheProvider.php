@@ -38,7 +38,7 @@ class RuntimeCacheProvider implements CacheProviderInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function has(string $key): bool
     {
@@ -46,7 +46,7 @@ class RuntimeCacheProvider implements CacheProviderInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function set(string $key, mixed $value): void
     {
@@ -54,7 +54,7 @@ class RuntimeCacheProvider implements CacheProviderInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function get(string $key): mixed
     {
@@ -62,7 +62,7 @@ class RuntimeCacheProvider implements CacheProviderInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function remove(string $key): void
     {
@@ -70,7 +70,7 @@ class RuntimeCacheProvider implements CacheProviderInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function clear(): void
     {

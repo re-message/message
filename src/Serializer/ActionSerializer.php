@@ -30,7 +30,7 @@ use RM\Standard\Message\MessageType;
 class ActionSerializer extends AbstractMessageSerializer
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @throws FormatterException
      * @throws SerializerException
@@ -54,7 +54,7 @@ class ActionSerializer extends AbstractMessageSerializer
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function getSupportTypes(): array
     {
@@ -62,7 +62,7 @@ class ActionSerializer extends AbstractMessageSerializer
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function getRequiredProperties(): array
     {

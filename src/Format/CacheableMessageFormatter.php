@@ -46,7 +46,7 @@ class CacheableMessageFormatter extends DecoratedMessageFormatter
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function encode(array $message): string
     {
@@ -63,7 +63,7 @@ class CacheableMessageFormatter extends DecoratedMessageFormatter
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function decode(string $message): array
     {

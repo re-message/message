@@ -36,7 +36,7 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @throws FormatterException
      */
@@ -46,7 +46,7 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function supports(MessageInterface|string $message): bool
     {

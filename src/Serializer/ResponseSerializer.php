@@ -37,10 +37,11 @@ class ResponseSerializer extends AbstractMessageSerializer
      */
     public function deserialize(string $message): MessageInterface
     {
-        $array = $this->formatter->decode($message);
         if (!$this->supports($message)) {
             $this->throwException();
         }
+
+        $array = $this->formatter->decode($message);
 
         $content = $array['content'];
         $id = $array['id'] ?? null;

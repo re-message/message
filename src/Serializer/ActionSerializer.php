@@ -39,10 +39,11 @@ class ActionSerializer extends AbstractMessageSerializer
      */
     public function deserialize(string $message): MessageInterface
     {
-        $array = $this->formatter->decode($message);
         if (!$this->supports($message)) {
             $this->throwException();
         }
+
+        $array = $this->formatter->decode($message);
 
         $name = $array['name'];
         $parameters = $array['parameters'] ?? [];

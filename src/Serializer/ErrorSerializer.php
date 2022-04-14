@@ -37,12 +37,16 @@ class ErrorSerializer extends AbstractMessageSerializer
      */
     public function deserialize(string $message): MessageInterface
     {
-        $array = $this->formatter->decode($message);
         if (!$this->supports($message)) {
             $this->throwException();
         }
 
-        return new Error($array['code'], $array['message']);
+        $array = $this->formatter->decode($message);
+
+        $errorCode = $array['code'];
+        $errorMessage = $array['message'];
+
+        return new Error($errorCode, $errorMessage);
     }
 
     /**

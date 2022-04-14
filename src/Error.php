@@ -17,8 +17,6 @@
 namespace RM\Standard\Message;
 
 /**
- * Class Error.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
  * @see MessageType::ERROR

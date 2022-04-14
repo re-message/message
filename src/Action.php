@@ -20,7 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * Class Action is a read-only representation.
+ * Class Action is a read-only representation of Action message.
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *

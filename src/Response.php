@@ -17,11 +17,9 @@
 namespace RM\Standard\Message;
 
 /**
- * Class Response.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
- * @see     MessageType::RESPONSE
+ * @see MessageType::RESPONSE
  */
 class Response implements MessageInterface
 {

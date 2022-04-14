@@ -21,8 +21,6 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 
 /**
- * Class JsonMessageFormatter.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 class JsonMessageFormatter implements MessageFormatterInterface

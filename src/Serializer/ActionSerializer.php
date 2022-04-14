@@ -23,8 +23,6 @@ use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 
 /**
- * Class ActionSerializer.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
  * @see MessageType::ACTION
@@ -33,8 +31,6 @@ class ActionSerializer extends AbstractMessageSerializer
 {
     /**
      * {@inheritdoc}
-     *
-     * @param string $message
      *
      * @throws FormatterException
      * @throws SerializerException

@@ -23,8 +23,6 @@ use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 
 /**
- * Class AbstractMessageSerializer.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 abstract class AbstractMessageSerializer implements MessageSerializerInterface

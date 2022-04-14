@@ -23,8 +23,6 @@ use RM\Standard\Message\MessageType;
 use RM\Standard\Message\Response;
 
 /**
- * Class ResponseSerializer.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
  * @see MessageType::RESPONSE

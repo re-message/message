@@ -22,8 +22,6 @@ use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\MessageInterface;
 
 /**
- * Class ChainMessageSerializer.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 class ChainMessageSerializer implements MessageSerializerInterface
@@ -83,11 +81,7 @@ class ChainMessageSerializer implements MessageSerializerInterface
     }
 
     /**
-     * @param MessageInterface|string $message
-     *
      * @throws SerializerException
-     *
-     * @return MessageSerializerInterface
      */
     protected function getMessageSerializer(MessageInterface|string $message): MessageSerializerInterface
     {

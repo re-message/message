@@ -19,34 +19,22 @@ namespace RM\Standard\Message\Serializer;
 use RM\Standard\Message\MessageInterface;
 
 /**
- * Interface MessageSerializerInterface.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 interface MessageSerializerInterface
 {
     /**
      * Serializes the message into transfer-safe string format.
-     *
-     * @param MessageInterface $message
-     *
-     * @return string
      */
     public function serialize(MessageInterface $message): string;
 
     /**
      * Parses the message from transfer-safe format.
-     *
-     * @param string $message
-     *
-     * @return MessageInterface
      */
     public function deserialize(string $message): MessageInterface;
 
     /**
-     * @param MessageInterface|string $message
-     *
-     * @return bool
+     * Checks that serializer supports this message.
      */
     public function supports(MessageInterface|string $message): bool;
 }

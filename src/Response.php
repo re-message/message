@@ -21,12 +21,14 @@ namespace RM\Standard\Message;
  *
  * @see MessageType::RESPONSE
  */
-class Response implements MessageInterface
+class Response implements IdentifiableMessageInterface
 {
+    private string|null $id;
     private array $content;
 
-    public function __construct(array $content)
+    public function __construct(array $content, string|null $id = null)
     {
+        $this->id = $id;
         $this->content = $content;
     }
 
@@ -36,6 +38,14 @@ class Response implements MessageInterface
     public function getType(): MessageType
     {
         return MessageType::RESPONSE;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getId(): string|null
+    {
+        return $this->id;
     }
 
     public function getContent(): array
@@ -48,9 +58,14 @@ class Response implements MessageInterface
      */
     public function toArray(): array
     {
-        return [
+        $array = [
+            'id' => $this->getId(),
             'type' => $this->getType()->value,
             'content' => $this->getContent(),
         ];
+
+        $notNull = static fn (mixed $value) => null !== $value;
+
+        return array_filter($array, $notNull);
     }
 }

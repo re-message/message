@@ -39,7 +39,7 @@ class ErrorSerializer extends AbstractMessageSerializer
     {
         $array = $this->formatter->decode($message);
         if (!$this->supports($message)) {
-            throw new SerializerException(sprintf('%s can not deserialize this message.', static::class));
+            $this->throwException();
         }
 
         return new Error($array['code'], $array['message']);

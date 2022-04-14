@@ -17,6 +17,7 @@
 namespace RM\Standard\Message\Serializer;
 
 use RM\Standard\Message\Exception\FormatterException;
+use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\Format\JsonMessageFormatter;
 use RM\Standard\Message\Format\MessageFormatterInterface;
 use RM\Standard\Message\MessageInterface;
@@ -99,5 +100,15 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     protected function getRequiredProperties(): array
     {
         return [];
+    }
+
+    /**
+     * @throws SerializerException
+     */
+    protected function throwException(): never
+    {
+        $message = sprintf('%s can not deserialize this message.', static::class);
+
+        throw new SerializerException($message);
     }
 }

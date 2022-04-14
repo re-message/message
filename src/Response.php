@@ -30,17 +30,17 @@ class Response implements MessageInterface
         $this->content = $content;
     }
 
-    public function getContent(): array
-    {
-        return $this->content;
-    }
-
     /**
      * {@inheritdoc}
      */
     public function getType(): MessageType
     {
         return MessageType::RESPONSE;
+    }
+
+    public function getContent(): array
+    {
+        return $this->content;
     }
 
     /**

@@ -39,6 +39,14 @@ class Action implements ActionInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    final public function getType(): MessageType
+    {
+        return MessageType::ACTION;
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function getId(): string|null
@@ -52,14 +60,6 @@ class Action implements ActionInterface
     public function getName(): string
     {
         return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    final public function getType(): MessageType
-    {
-        return MessageType::ACTION;
     }
 
     /**

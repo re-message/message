@@ -32,6 +32,14 @@ class Error implements MessageInterface
         $this->message = $message;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getType(): MessageType
+    {
+        return MessageType::ERROR;
+    }
+
     public function getCode(): int
     {
         return $this->code;
@@ -40,14 +48,6 @@ class Error implements MessageInterface
     public function getMessage(): string
     {
         return $this->message;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getType(): MessageType
-    {
-        return MessageType::ERROR;
     }
 
     /**

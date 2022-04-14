@@ -42,7 +42,10 @@ class ResponseSerializer extends AbstractMessageSerializer
             throw new SerializerException(sprintf('%s can not deserialize this message.', static::class));
         }
 
-        return new Response($array['content']);
+        $content = $array['content'];
+        $id = $array['id'] ?? null;
+
+        return new Response($content, $id);
     }
 
     /**

@@ -14,11 +14,15 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standard\Message\Exception;
+namespace RM\Standard\Message;
 
 /**
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
-class SerializerException extends Exception
+interface TokenizedMessageInterface extends MessageInterface
 {
+    /**
+     * Returns the token to access the requested resource or null.
+     */
+    public function getToken(): string|null;
 }

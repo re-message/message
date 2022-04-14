@@ -21,8 +21,6 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 
 /**
- * Class JsonMessageFormatter.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 class JsonMessageFormatter implements MessageFormatterInterface
@@ -35,7 +33,7 @@ class JsonMessageFormatter implements MessageFormatterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function encode(array $message): string
     {
@@ -47,7 +45,7 @@ class JsonMessageFormatter implements MessageFormatterInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function decode(string $message): array
     {

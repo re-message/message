@@ -17,8 +17,6 @@
 namespace RM\Standard\Message\Exception;
 
 /**
- * Class FormatterException.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 class FormatterException extends Exception

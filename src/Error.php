@@ -17,8 +17,6 @@
 namespace RM\Standard\Message;
 
 /**
- * Class Error.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
  * @see MessageType::ERROR
@@ -34,6 +32,14 @@ class Error implements MessageInterface
         $this->message = $message;
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function getType(): MessageType
+    {
+        return MessageType::ERROR;
+    }
+
     public function getCode(): int
     {
         return $this->code;
@@ -45,15 +51,7 @@ class Error implements MessageInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function getType(): MessageType
-    {
-        return MessageType::ERROR;
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     final public function toArray(): array
     {

@@ -14,11 +14,41 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standard\Message\Exception;
+namespace RM\Standard\Message\Cache;
 
 /**
+ * @template T of mixed
+ *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
-class SerializerException extends Exception
+interface CacheProviderInterface
 {
+    /**
+     * Checks key exist in cache.
+     */
+    public function has(string $key): bool;
+
+    /**
+     * Saves a value by key.
+     *
+     * @param T $value
+     */
+    public function set(string $key, mixed $value): void;
+
+    /**
+     * Saves a value by key.
+     *
+     * @return T
+     */
+    public function get(string $key): mixed;
+
+    /**
+     * Remove cache by key.
+     */
+    public function remove(string $key): void;
+
+    /**
+     * Clear all cache.
+     */
+    public function clear(): void;
 }

@@ -14,11 +14,15 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standard\Message\Exception;
+namespace RM\Standard\Message;
 
 /**
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
-class SerializerException extends Exception
+interface IdentifiableMessageInterface extends MessageInterface
 {
+    /**
+     * Returns the unique identifier of message or null.
+     */
+    public function getId(): string|null;
 }

@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        php-versions: ['8.1', '8.2']
+        php-versions: ['8.1']
 
     steps:
       - uses: actions/checkout@v2
@@ -53,5 +53,3 @@ jobs:
 
       - name: PHP CS Fixer
         run: composer run-script lint:ci
-        env:
-          PHP_CS_FIXER_IGNORE_ENV: true

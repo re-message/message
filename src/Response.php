@@ -17,19 +17,32 @@
 namespace RM\Standard\Message;
 
 /**
- * Class Response.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
- * @see     MessageType::RESPONSE
+ * @see MessageType::RESPONSE
  */
-class Response implements MessageInterface
+class Response implements IdentifiableMessageInterface
 {
-    private array $content;
+    public function __construct(
+        private readonly array $content,
+        private readonly string|null $id = null
+    ) {
+    }
 
-    public function __construct(array $content)
+    /**
+     * @inheritDoc
+     */
+    public function getType(): MessageType
     {
-        $this->content = $content;
+        return MessageType::RESPONSE;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getId(): string|null
+    {
+        return $this->id;
     }
 
     public function getContent(): array
@@ -38,21 +51,18 @@ class Response implements MessageInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function getType(): MessageType
-    {
-        return MessageType::RESPONSE;
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function toArray(): array
     {
-        return [
+        $array = [
+            'id' => $this->getId(),
             'type' => $this->getType()->value,
             'content' => $this->getContent(),
         ];
+
+        $notNull = static fn (mixed $value) => null !== $value;
+
+        return array_filter($array, $notNull);
     }
 }

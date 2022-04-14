@@ -17,8 +17,6 @@
 namespace RM\Standard\Message;
 
 /**
- * Class Message.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 interface MessageInterface

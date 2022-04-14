@@ -84,15 +84,18 @@ class ActionSerializerTest extends TestCase
     public function providePositiveMessages(): iterable
     {
         $action = new Action('some.action', ['var' => 'test']);
+
         yield [$action];
 
         $action = new Action('some.action', ['another' => 123]);
+
         yield [$action];
     }
 
     public function provideNegativeMessages(): iterable
     {
         yield [new Response(['oof'])];
+
         yield [new Error(1, 'Oops i did it again')];
     }
 }

@@ -23,8 +23,6 @@ use RM\Standard\Message\MessageType;
 use RM\Standard\Message\Response;
 
 /**
- * Class ResponseSerializer.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
  * @see MessageType::RESPONSE
@@ -32,23 +30,27 @@ use RM\Standard\Message\Response;
 class ResponseSerializer extends AbstractMessageSerializer
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @throws FormatterException
      * @throws SerializerException
      */
     public function deserialize(string $message): MessageInterface
     {
-        $array = $this->formatter->decode($message);
         if (!$this->supports($message)) {
-            throw new SerializerException(sprintf('%s can not deserialize this message.', static::class));
+            $this->throwException();
         }
 
-        return new Response($array['content']);
+        $array = $this->formatter->decode($message);
+
+        $content = $array['content'];
+        $id = $array['id'] ?? null;
+
+        return new Response($content, $id);
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function getSupportTypes(): array
     {
@@ -56,7 +58,7 @@ class ResponseSerializer extends AbstractMessageSerializer
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function getRequiredProperties(): array
     {

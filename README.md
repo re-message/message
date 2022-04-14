@@ -2,7 +2,7 @@
 
 This package defines the rules and formats for communication between clients and servers that are part of Relations Messenger.
 
-Standard based on JSON format and created to implement a [JSON-pure API](https://mmikowski.github.io/json-pure/). This package uses the `symfony/serializer` for encoding and decoding JSON.
+Standard based on JSON format and created to implement a [JSON-pure API][4]. This package uses the `symfony/serializer` for encoding and decoding JSON.
 
 The `relmsg/client` and `relmsg/core` based on this standard.
 
@@ -24,7 +24,7 @@ Message is any data sent as part of the server-client interaction. Any message *
 
 ### Transport
 
-As a data transmission channel, HTTP or sockets can be used. See [Relations Messenger Core documentation](https://dev.relmsg.ru/transport) for details.
+As a data transmission channel, HTTP or sockets can be used. See [Core documentation][1] for details.
 
 When using the HTTP protocol, only action, response, error messages can be used.
 
@@ -34,9 +34,13 @@ There are several types of messages for communication. The main types of message
 
 ### Action
 
-The Action message is a message, which is a request to perform some action and return its results as a [response](#response). Action can be sent only from a client side.
+The Action message is a message, which is a request to perform some action and return its results as a [Response](#response). Action can be sent only from a client side.
 
 Any action message **MUST** have a `name` and a `parameters` properties. The `name` property contains a name of action (e.g. `auth.sendCode`). The `parameters` property is a list of parameters for action.
+
+Also, Action message can have these optional properties:
+* `id` property: a random identifier for the Action message which **MUST** be returned in the [Response](#response) message if the identifier was sent
+* `token` property: access token to this action (you can pass the token in [other ways][2])
 
 Example:
 ```json
@@ -53,7 +57,10 @@ Example:
 
 ### Response
 
-The Response message is a message returned as the result of the [action](#action) if the action completed successfully. A message of this type **MUST** have a `content` property, that contains the results of action. Response can be sent only by the Core.
+The Response message is a message returned as the result of the [Action](#action) if the action completed successfully. A message of this type **MUST** have a `content` property, that contains the results of action. Response can be sent only by the Core.
+
+Also, Response message can have these optional properties:
+* `id` property: an identifier from the Action message if the identifier was sent
 
 Example:
 ```json
@@ -69,7 +76,7 @@ Example:
 
 ### Error
 
-The Error message is the message returned if an error occurred while performing an action. The error message **MUST** have a `code` and `message` properties. The `code` property is a number code of error. The `message` property is a short description about error. A complete list of errors that may be thrown is available [here](https://dev.relmsg.ru/errors). Error can be sent only by the Core.
+The Error message is the message returned if an error occurred while performing an action. The error message **MUST** have a `code` and `message` properties. The `code` property is a number code of error. The `message` property is a short description about error. A complete list of errors that may be thrown is available [here][3]. Error can be sent only by the Core.
 
 Example:
 ```json
@@ -79,3 +86,8 @@ Example:
     "message": "One of the passed parameters is invalid."
 }
 ```
+
+[1]: https://dev.relmsg.ru/transport
+[2]: https://dev.relmsg.ru/auth
+[3]: https://dev.relmsg.ru/errors
+[4]: https://mmikowski.github.io/json-pure/

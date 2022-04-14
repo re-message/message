@@ -20,7 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 /**
- * Class Action is a read-only representation.
+ * Class Action is a read-only representation of Action message.
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
@@ -28,25 +28,19 @@ use Doctrine\Common\Collections\Collection;
  */
 class Action implements ActionInterface
 {
-    private string $name;
-    private Collection $parameters;
+    private readonly Collection $parameters;
 
-    public function __construct(string $name, array $parameters = [])
-    {
-        $this->name = $name;
+    public function __construct(
+        private readonly string $name,
+        array $parameters = [],
+        private readonly string|null $id = null,
+        private readonly string|null $token = null
+    ) {
         $this->parameters = new ArrayCollection($parameters);
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     final public function getType(): MessageType
     {
@@ -54,7 +48,23 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
+     */
+    public function getId(): string|null
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @inheritDoc
      */
     public function hasParameter(string $name): bool
     {
@@ -62,7 +72,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function getValue(string $name): mixed
     {
@@ -70,7 +80,7 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function hasValue(string $name): bool
     {
@@ -78,14 +88,28 @@ class Action implements ActionInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
+     */
+    public function getToken(): string|null
+    {
+        return $this->token;
+    }
+
+    /**
+     * @inheritDoc
      */
     final public function toArray(): array
     {
-        return [
+        $array = [
+            'id' => $this->getId(),
             'type' => $this->getType()->value,
             'name' => $this->getName(),
             'parameters' => $this->parameters->toArray(),
+            'token' => $this->getToken(),
         ];
+
+        $notNull = static fn (mixed $value) => null !== $value;
+
+        return array_filter($array, $notNull);
     }
 }

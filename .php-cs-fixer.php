@@ -22,7 +22,13 @@ return $config
             'strict_param' => true,
             'array_syntax' => ['syntax' => 'short'],
             'concat_space' => ['spacing' => 'one'],
-            'php_unit_test_case_static_method_calls' => ['call_type' => 'self']
+            'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
+            'phpdoc_tag_type' => [
+                'tags' => ['inheritDoc' => 'annotation'],
+            ],
+            'phpdoc_tag_casing' => [
+                'tags' => ['inheritDoc'],
+            ],
         ]
     )
     ->setRiskyAllowed(true)

@@ -14,11 +14,31 @@
  * file that was distributed with this source code.
  */
 
-namespace RM\Standard\Message\Exception;
+namespace RM\Standard\Message\Format;
 
 /**
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
-class SerializerException extends Exception
+abstract class DecoratedMessageFormatter implements MessageFormatterInterface
 {
+    public function __construct(
+        private readonly MessageFormatterInterface $formatter,
+    ) {
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function encode(array $message): string
+    {
+        return $this->formatter->encode($message);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function decode(string $message): array
+    {
+        return $this->formatter->decode($message);
+    }
 }

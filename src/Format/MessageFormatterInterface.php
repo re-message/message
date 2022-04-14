@@ -29,22 +29,14 @@ interface MessageFormatterInterface
     /**
      * Encodes the message into some format.
      *
-     * @param array $message
-     *
      * @throws FormatterException
-     *
-     * @return string
      */
     public function encode(array $message): string;
 
     /**
      * Decodes the message from some format.
      *
-     * @param string $message
-     *
      * @throws FormatterException
-     *
-     * @return array
      */
     public function decode(string $message): array;
 }

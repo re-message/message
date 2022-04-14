@@ -17,18 +17,14 @@
 namespace RM\Standard\Message;
 
 /**
- * Interface ActionInterface.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
  * @see MessageType::ACTION
  */
-interface ActionInterface extends MessageInterface
+interface ActionInterface extends IdentifiableMessageInterface, TokenizedMessageInterface
 {
     /**
      * The unique name of action.
-     *
-     * @return string
      *
      * @see https://dev.relmsg.ru/api/actions
      */
@@ -36,28 +32,16 @@ interface ActionInterface extends MessageInterface
 
     /**
      * Checks the existence of parameter by name.
-     *
-     * @param string $name
-     *
-     * @return bool
      */
     public function hasParameter(string $name): bool;
 
     /**
      * Returns the current parameter value or the default value or null.
-     *
-     * @param string $name
-     *
-     * @return null|mixed
      */
     public function getValue(string $name): mixed;
 
     /**
      * Checks the existence of value or default value for parameter.
-     *
-     * @param string $name
-     *
-     * @return bool
      */
     public function hasValue(string $name): bool;
 }

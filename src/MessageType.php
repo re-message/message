@@ -19,8 +19,6 @@ namespace RM\Standard\Message;
 use JsonSerializable;
 
 /**
- * Enum MessageType.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  */
 enum MessageType: string implements JsonSerializable

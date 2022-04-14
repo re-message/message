@@ -23,8 +23,6 @@ use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 
 /**
- * Class ActionSerializer.
- *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
  *
  * @see MessageType::ACTION
@@ -32,9 +30,7 @@ use RM\Standard\Message\MessageType;
 class ActionSerializer extends AbstractMessageSerializer
 {
     /**
-     * {@inheritdoc}
-     *
-     * @param string $message
+     * @inheritDoc
      *
      * @throws FormatterException
      * @throws SerializerException
@@ -43,16 +39,22 @@ class ActionSerializer extends AbstractMessageSerializer
      */
     public function deserialize(string $message): MessageInterface
     {
-        $array = $this->formatter->decode($message);
         if (!$this->supports($message)) {
-            throw new SerializerException(sprintf('%s can not deserialize this message.', static::class));
+            $this->throwException();
         }
 
-        return new Action($array['name'], $array['parameters'] ?? []);
+        $array = $this->formatter->decode($message);
+
+        $name = $array['name'];
+        $parameters = $array['parameters'] ?? [];
+        $id = $array['id'] ?? null;
+        $token = $array['token'] ?? null;
+
+        return new Action($name, $parameters, $id, $token);
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function getSupportTypes(): array
     {
@@ -60,7 +62,7 @@ class ActionSerializer extends AbstractMessageSerializer
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function getRequiredProperties(): array
     {

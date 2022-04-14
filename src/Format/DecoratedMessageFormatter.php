@@ -41,4 +41,14 @@ abstract class DecoratedMessageFormatter implements MessageFormatterInterface
     {
         return $this->formatter->decode($message);
     }
+
+    public function getFormatter(): MessageFormatterInterface
+    {
+        $formatter = $this->formatter;
+        while ($formatter instanceof self) {
+            $formatter = $formatter->getFormatter();
+        }
+
+        return $formatter;
+    }
 }

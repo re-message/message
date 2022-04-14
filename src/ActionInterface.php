@@ -23,7 +23,7 @@ namespace RM\Standard\Message;
  *
  * @see MessageType::ACTION
  */
-interface ActionInterface extends MessageInterface
+interface ActionInterface extends IdentifiableMessageInterface
 {
     /**
      * The unique name of action.

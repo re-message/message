@@ -28,13 +28,23 @@ use Doctrine\Common\Collections\Collection;
  */
 class Action implements ActionInterface
 {
+    private string|null $id;
     private string $name;
     private Collection $parameters;
 
-    public function __construct(string $name, array $parameters = [])
+    public function __construct(string $name, array $parameters = [], string $id = null)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->parameters = new ArrayCollection($parameters);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getId(): string|null
+    {
+        return $this->id;
     }
 
     /**
@@ -82,10 +92,15 @@ class Action implements ActionInterface
      */
     final public function toArray(): array
     {
-        return [
+        $array = [
+            'id' => $this->getId(),
             'type' => $this->getType()->value,
             'name' => $this->getName(),
             'parameters' => $this->parameters->toArray(),
         ];
+
+        $notNull = static fn (mixed $value) => null !== $value;
+
+        return array_filter($array, $notNull);
     }
 }

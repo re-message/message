@@ -48,8 +48,9 @@ class ActionSerializer extends AbstractMessageSerializer
         $name = $array['name'];
         $parameters = $array['parameters'] ?? [];
         $id = $array['id'] ?? null;
+        $token = $array['token'] ?? null;
 
-        return new Action($name, $parameters, $id);
+        return new Action($name, $parameters, $id, $token);
     }
 
     /**

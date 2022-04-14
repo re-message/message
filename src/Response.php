@@ -23,13 +23,10 @@ namespace RM\Standard\Message;
  */
 class Response implements IdentifiableMessageInterface
 {
-    private string|null $id;
-    private array $content;
-
-    public function __construct(array $content, string|null $id = null)
-    {
-        $this->id = $id;
-        $this->content = $content;
+    public function __construct(
+        private readonly array $content,
+        private readonly string|null $id = null
+    ) {
     }
 
     /**

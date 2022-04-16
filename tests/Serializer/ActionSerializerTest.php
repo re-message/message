@@ -23,60 +23,48 @@ use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\Response;
 use RM\Standard\Message\Serializer\ActionSerializer;
-use RM\Standard\Message\Serializer\MessageSerializerInterface;
 
 /**
  * @internal
- * @coversNothing
+ * @coversDefaultClass \RM\Standard\Message\Serializer\ActionSerializer
  */
 class ActionSerializerTest extends TestCase
 {
-    public function testConstructor(): MessageSerializerInterface
-    {
-        $serializer = new ActionSerializer();
-        self::assertInstanceOf(ActionSerializer::class, $serializer);
-
-        return $serializer;
-    }
-
     /**
      * @dataProvider providePositiveMessages
-     * @depends      testConstructor
-     *
-     * @param MessageInterface           $message
-     * @param MessageSerializerInterface $serializer
+     * @covers       ::serialize
      */
-    public function testSerialize(MessageInterface $message, MessageSerializerInterface $serializer): void
+    public function testSerialize(MessageInterface $message): void
     {
+        $serializer = new ActionSerializer();
         $serialized = $serializer->serialize($message);
+
         self::assertIsString($serialized);
     }
 
     /**
      * @dataProvider providePositiveMessages
-     * @depends      testConstructor
-     *
-     * @param MessageInterface           $message
-     * @param MessageSerializerInterface $serializer
+     * @covers       ::deserialize
      */
-    public function testUnserializePositive(MessageInterface $message, MessageSerializerInterface $serializer): void
+    public function testUnserializePositive(MessageInterface $message): void
     {
+        $serializer = new ActionSerializer();
         $serialized = $serializer->serialize($message);
         $m = $serializer->deserialize($serialized);
+
         self::assertEquals($message->getType(), $m->getType());
         self::assertEquals($message->toArray(), $m->toArray());
     }
 
     /**
      * @dataProvider provideNegativeMessages
-     * @depends      testConstructor
-     *
-     * @param MessageInterface           $message
-     * @param MessageSerializerInterface $serializer
+     * @covers       ::deserialize
      */
-    public function testUnserializeNegative(MessageInterface $message, MessageSerializerInterface $serializer): void
+    public function testUnserializeNegative(MessageInterface $message): void
     {
+        $serializer = new ActionSerializer();
         $serialized = $serializer->serialize($message);
+
         $this->expectException(SerializerException::class);
         $serializer->deserialize($serialized);
     }

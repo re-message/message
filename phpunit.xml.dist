@@ -5,6 +5,7 @@
          executionOrder="depends,defects"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTodoAnnotatedTests="true"
+         forceCoversAnnotation="true"
          verbose="true">
     <testsuites>
         <testsuite name="default">

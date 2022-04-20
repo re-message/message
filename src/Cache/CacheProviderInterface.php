@@ -20,6 +20,8 @@ namespace RM\Standard\Message\Cache;
  * @template T of mixed
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
+ *
+ * @deprecated since 2.1.2 and will be removed at 2.2.0.
  */
 interface CacheProviderInterface
 {

@@ -24,6 +24,8 @@ use Doctrine\Common\Collections\Collection;
  * @template-implements CacheProviderInterface<T>
  *
  * @author Oleg Kozlov <h1karo@relmsg.ru>
+ *
+ * @deprecated since 2.1.2 and will be removed at 2.2.0.
  */
 class RuntimeCacheProvider implements CacheProviderInterface
 {

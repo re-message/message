@@ -1,14 +1,14 @@
 <?php
 /*
- * This file is a part of Relations Messenger Message Standard.
- * This package is a part of Relations Messenger.
+ * This file is a part of Message Standard.
+ * This package is a part of Re Message.
  *
- * @see       https://github.com/relmsg/message
- * @see       https://dev.relmsg.ru/packages/message
- * @copyright Copyright (c) 2018-2022 Relations Messenger
- * @author    Oleg Kozlov <h1karo@relmsg.ru>
+ * @link      https://github.com/re-message/message
+ * @link      https://dev.remessage.ru/packages/message
+ * @copyright Copyright (c) 2018-2022 Re Message
+ * @author    Oleg Kozlov <h1karo@remessage.ru>
  * @license   Apache License 2.0
- * @license   https://legal.relmsg.ru/licenses/message
+ * @license   https://legal.remessage.ru/licenses/message
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,16 +17,16 @@
 namespace RM\Standard\Message;
 
 /**
- * @author Oleg Kozlov <h1karo@relmsg.ru>
- *
  * @see MessageType::ACTION
+ *
+ * @author Oleg Kozlov <h1karo@remessage.ru>
  */
 interface ActionInterface extends IdentifiableMessageInterface, TokenizedMessageInterface
 {
     /**
      * The unique name of action.
      *
-     * @see https://dev.relmsg.ru/api/actions
+     * @see https://dev.remessage.ru/api/actions
      */
     public function getName(): string;
 

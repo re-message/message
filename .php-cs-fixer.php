@@ -1,9 +1,10 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__)
+    ->append([__FILE__])
     ->exclude('vendor')
     ->notPath('src/MessageType.php')
-    ->in(__DIR__)
 ;
 
 $namespace = 'Re Message';

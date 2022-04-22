@@ -1,10 +1,10 @@
 # Message Standard
 
-This package defines the rules and formats for communication between clients and servers that are part of Relations Messenger.
+This package defines the rules and formats for communication between clients and servers that are part of [Re: Message][1].
 
-Standard based on JSON format and created to implement a [JSON-pure API][4]. This package uses the `symfony/serializer` for encoding and decoding JSON.
+Standard based on JSON format and created to implement a [JSON-pure API][5]. This package uses the `symfony/serializer` for encoding and decoding JSON.
 
-The `relmsg/client` and `relmsg/core` based on this standard.
+The `remessage/client` and `remessage/core` based on this standard.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ PHP 8.1+ with these extensions:
 
 You will need Composer to install:
 
-`composer require relmsg/message`
+`composer require remessage/message`
 
 ## Description
 
@@ -24,7 +24,7 @@ Message is any data sent as part of the server-client interaction. Any message *
 
 ### Transport
 
-As a data transmission channel, HTTP or sockets can be used. See [Core documentation][1] for details.
+As a data transmission channel, HTTP or sockets can be used. See [Core documentation][2] for details.
 
 When using the HTTP protocol, only action, response, error messages can be used.
 
@@ -40,7 +40,7 @@ Any action message **MUST** have a `name` and a `parameters` properties. The `na
 
 Also, Action message can have these optional properties:
 * `id` property: a random identifier for the Action message which **MUST** be returned in the [Response](#response) message if the identifier was sent
-* `token` property: access token to this action (you can pass the token in [other ways][2])
+* `token` property: access token to this action (you can pass the token in [other ways][3])
 
 Example:
 ```json
@@ -76,7 +76,7 @@ Example:
 
 ### Error
 
-The Error message is the message returned if an error occurred while performing an action. The error message **MUST** have a `code` and `message` properties. The `code` property is a number code of error. The `message` property is a short description about error. A complete list of errors that may be thrown is available [here][3]. Error can be sent only by the Core.
+The Error message is the message returned if an error occurred while performing an action. The error message **MUST** have a `code` and `message` properties. The `code` property is a number code of error. The `message` property is a short description about error. A complete list of errors that may be thrown is available [here][4]. Error can be sent only by the Core.
 
 Example:
 ```json
@@ -87,7 +87,8 @@ Example:
 }
 ```
 
-[1]: https://dev.relmsg.ru/transport
-[2]: https://dev.relmsg.ru/auth
-[3]: https://dev.relmsg.ru/errors
-[4]: https://mmikowski.github.io/json-pure/
+[1]: https://remessage.ru
+[2]: https://dev.remessage.ru/transport
+[3]: https://dev.remessage.ru/auth
+[4]: https://dev.remessage.ru/errors
+[5]: https://mmikowski.github.io/json-pure/

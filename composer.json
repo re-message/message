@@ -16,7 +16,8 @@
         "ext-mbstring": "*",
 
         "doctrine/collections": "^2.0",
-        "symfony/serializer": "^6.0"
+        "symfony/serializer": "^6.0",
+        "symfony/deprecation-contracts": "^3.1"
     },
     "autoload": {
         "psr-4": {

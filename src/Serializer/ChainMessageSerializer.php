@@ -16,81 +16,19 @@
 
 namespace RM\Standard\Message\Serializer;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use RM\Standard\Message\Exception\SerializerException;
-use RM\Standard\Message\MessageInterface;
+trigger_deprecation(
+    'remessage/message',
+    '2.3.0',
+    '%s will be removed in 3.0. Please use %s instead',
+    ChainMessageSerializer::class,
+    DelegatingMessageSerializer::class,
+);
 
 /**
+ * @deprecated please use {@see DelegatingMessageSerializer} instead
+ *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
-class ChainMessageSerializer implements MessageSerializerInterface
+class ChainMessageSerializer extends DelegatingMessageSerializer
 {
-    /**
-     * @var Collection<MessageSerializerInterface>
-     */
-    protected Collection $serializers;
-
-    /**
-     * @param MessageSerializerInterface[] $serializers
-     */
-    public function __construct(array $serializers = [])
-    {
-        $this->serializers = new ArrayCollection();
-
-        foreach ($serializers as $serializer) {
-            $this->pushSerializer($serializer);
-        }
-    }
-
-    public function pushSerializer(MessageSerializerInterface $serializer): void
-    {
-        $this->serializers->add($serializer);
-    }
-
-    /**
-     * @inheritDoc
-     *
-     * @throws SerializerException
-     */
-    public function serialize(MessageInterface $message): string
-    {
-        return $this->getMessageSerializer($message)->serialize($message);
-    }
-
-    /**
-     * @inheritDoc
-     *
-     * @throws SerializerException
-     */
-    public function deserialize(string $message): MessageInterface
-    {
-        return $this->getMessageSerializer($message)->deserialize($message);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function supports(MessageInterface|string $message): bool
-    {
-        try {
-            return null !== $this->getMessageSerializer($message);
-        } catch (SerializerException) {
-            return false;
-        }
-    }
-
-    /**
-     * @throws SerializerException
-     */
-    protected function getMessageSerializer(MessageInterface|string $message): MessageSerializerInterface
-    {
-        foreach ($this->serializers as $serializer) {
-            if ($serializer->supports($message)) {
-                return $serializer;
-            }
-        }
-
-        throw new SerializerException('Serializer for passed message not found.');
-    }
 }

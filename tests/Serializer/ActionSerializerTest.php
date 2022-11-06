@@ -26,12 +26,14 @@ use RM\Standard\Message\Serializer\ActionSerializer;
 
 /**
  * @internal
+ *
  * @coversDefaultClass \RM\Standard\Message\Serializer\ActionSerializer
  */
 class ActionSerializerTest extends TestCase
 {
     /**
      * @dataProvider providePositiveMessages
+     *
      * @covers       ::serialize
      */
     public function testSerialize(MessageInterface $message): void
@@ -44,6 +46,7 @@ class ActionSerializerTest extends TestCase
 
     /**
      * @dataProvider providePositiveMessages
+     *
      * @covers       ::deserialize
      */
     public function testUnserializePositive(MessageInterface $message): void
@@ -58,6 +61,7 @@ class ActionSerializerTest extends TestCase
 
     /**
      * @dataProvider provideNegativeMessages
+     *
      * @covers       ::deserialize
      */
     public function testUnserializeNegative(MessageInterface $message): void

@@ -32,10 +32,10 @@ class ActionSerializer extends AbstractMessageSerializer
     /**
      * @inheritDoc
      *
+     * @return Action
+     *
      * @throws FormatterException
      * @throws SerializerException
-     *
-     * @return Action
      */
     public function deserialize(string $message): MessageInterface
     {

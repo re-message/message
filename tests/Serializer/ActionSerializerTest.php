@@ -16,6 +16,10 @@
 
 namespace RM\Standard\Message\Tests\Serializer;
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 use RM\Standard\Message\Action;
 use RM\Standard\Message\Error;
@@ -26,17 +30,14 @@ use RM\Standard\Message\Serializer\ActionSerializer;
 
 /**
  * @internal
- *
- * @coversDefaultClass \RM\Standard\Message\Serializer\ActionSerializer
  */
+#[CoversClass(ActionSerializer::class)]
 class ActionSerializerTest extends TestCase
 {
-    /**
-     * @dataProvider providePositiveMessages
-     *
-     * @covers       ::serialize
-     */
-    public function testSerialize(MessageInterface $message): void
+    #[Test]
+    #[TestDox('Positive serialization')]
+    #[DataProvider('providePositiveMessages')]
+    public function serialize(MessageInterface $message): void
     {
         $serializer = new ActionSerializer();
         $serialized = $serializer->serialize($message);
@@ -44,12 +45,10 @@ class ActionSerializerTest extends TestCase
         self::assertIsString($serialized);
     }
 
-    /**
-     * @dataProvider providePositiveMessages
-     *
-     * @covers       ::deserialize
-     */
-    public function testUnserializePositive(MessageInterface $message): void
+    #[Test]
+    #[TestDox('Positive deserialization')]
+    #[DataProvider('providePositiveMessages')]
+    public function deserializePositive(MessageInterface $message): void
     {
         $serializer = new ActionSerializer();
         $serialized = $serializer->serialize($message);
@@ -59,12 +58,10 @@ class ActionSerializerTest extends TestCase
         self::assertEquals($message->toArray(), $m->toArray());
     }
 
-    /**
-     * @dataProvider provideNegativeMessages
-     *
-     * @covers       ::deserialize
-     */
-    public function testUnserializeNegative(MessageInterface $message): void
+    #[Test]
+    #[TestDox('Negative deserialization')]
+    #[DataProvider('provideNegativeMessages')]
+    public function deserializeNegative(MessageInterface $message): void
     {
         $serializer = new ActionSerializer();
         $serialized = $serializer->serialize($message);
@@ -73,7 +70,7 @@ class ActionSerializerTest extends TestCase
         $serializer->deserialize($serialized);
     }
 
-    public function providePositiveMessages(): iterable
+    public static function providePositiveMessages(): iterable
     {
         $action = new Action('some.action', ['var' => 'test']);
 
@@ -84,7 +81,7 @@ class ActionSerializerTest extends TestCase
         yield [$action];
     }
 
-    public function provideNegativeMessages(): iterable
+    public static function provideNegativeMessages(): iterable
     {
         yield [new Response(['oof'])];
 

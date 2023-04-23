@@ -8,7 +8,7 @@ The `remessage/client` and `remessage/core` based on this standard.
 
 ## Requirements
 
-PHP 8.1+ with these extensions:
+PHP 8.2+ with these extensions:
 1. json
 1. mbstring
 

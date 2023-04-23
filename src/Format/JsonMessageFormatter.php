@@ -16,43 +16,17 @@
 
 namespace RM\Standard\Message\Format;
 
-use RM\Standard\Message\Exception\FormatterException;
+use Symfony\Component\Serializer\Encoder\DecoderInterface;
+use Symfony\Component\Serializer\Encoder\EncoderInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 
 /**
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
-class JsonMessageFormatter implements MessageFormatterInterface
+class JsonMessageFormatter extends SymfonySerializerFormatter
 {
-    private JsonEncoder $encoder;
-
-    public function __construct()
+    public function __construct(EncoderInterface&DecoderInterface $encoder = new JsonEncoder())
     {
-        $this->encoder = new JsonEncoder();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function encode(array $message): string
-    {
-        try {
-            return $this->encoder->encode($message, JsonEncoder::FORMAT);
-        } catch (UnexpectedValueException $e) {
-            throw new FormatterException(sprintf('Unable to encode passed message into JSON: %s', $e->getMessage()));
-        }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function decode(string $message): array
-    {
-        try {
-            return $this->encoder->decode($message, JsonEncoder::FORMAT);
-        } catch (UnexpectedValueException $e) {
-            throw new FormatterException(sprintf('Unable to decode passed message from JSON: %s', $e->getMessage()));
-        }
+        parent::__construct($encoder, JsonEncoder::FORMAT);
     }
 }

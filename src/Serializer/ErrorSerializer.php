@@ -43,8 +43,8 @@ class ErrorSerializer extends AbstractMessageSerializer
 
         $array = $this->formatter->decode($message);
 
-        $errorCode = $array['code'];
-        $errorMessage = $array['message'];
+        $errorCode = $array[Error::PROPERTY_CODE];
+        $errorMessage = $array[Error::PROPERTY_MESSAGE];
 
         return new Error($errorCode, $errorMessage);
     }
@@ -62,6 +62,6 @@ class ErrorSerializer extends AbstractMessageSerializer
      */
     protected function getRequiredProperties(): array
     {
-        return ['code', 'message'];
+        return [Error::PROPERTY_CODE, Error::PROPERTY_MESSAGE];
     }
 }

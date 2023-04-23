@@ -17,10 +17,13 @@
 namespace RM\Standard\Message\Serializer;
 
 use RM\Standard\Message\Action;
+use RM\Standard\Message\ActionInterface;
 use RM\Standard\Message\Exception\FormatterException;
 use RM\Standard\Message\Exception\SerializerException;
+use RM\Standard\Message\IdentifiableMessageInterface;
 use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
+use RM\Standard\Message\TokenizedMessageInterface;
 
 /**
  * @see MessageType::ACTION
@@ -45,10 +48,10 @@ class ActionSerializer extends AbstractMessageSerializer
 
         $array = $this->formatter->decode($message);
 
-        $name = $array['name'];
-        $parameters = $array['parameters'] ?? [];
-        $id = $array['id'] ?? null;
-        $token = $array['token'] ?? null;
+        $name = $array[ActionInterface::PROPERTY_NAME];
+        $parameters = $array[ActionInterface::PROPERTY_PARAMETERS] ?? [];
+        $id = $array[IdentifiableMessageInterface::PROPERTY_ID] ?? null;
+        $token = $array[TokenizedMessageInterface::PROPERTY_TOKEN] ?? null;
 
         return new Action($name, $parameters, $id, $token);
     }
@@ -66,6 +69,6 @@ class ActionSerializer extends AbstractMessageSerializer
      */
     protected function getRequiredProperties(): array
     {
-        return ['name'];
+        return [ActionInterface::PROPERTY_NAME];
     }
 }

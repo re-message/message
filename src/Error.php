@@ -5,7 +5,7 @@
  *
  * @link      https://github.com/re-message/message
  * @link      https://dev.remessage.ru/packages/message
- * @copyright Copyright (c) 2018-2022 Re Message
+ * @copyright Copyright (c) 2018-2023 Re Message
  * @author    Oleg Kozlov <h1karo@remessage.ru>
  * @license   Apache License 2.0
  * @license   https://legal.remessage.ru/licenses/message
@@ -23,6 +23,9 @@ namespace RM\Standard\Message;
  */
 class Error implements MessageInterface
 {
+    public const PROPERTY_CODE = 'code';
+    public const PROPERTY_MESSAGE = 'message';
+
     private int $code;
     private string $message;
 
@@ -56,9 +59,9 @@ class Error implements MessageInterface
     final public function toArray(): array
     {
         return [
-            'type' => $this->getType()->value,
-            'code' => $this->getCode(),
-            'message' => $this->getMessage(),
+            self::PROPERTY_TYPE => $this->getType()->toString(),
+            self::PROPERTY_CODE => $this->getCode(),
+            self::PROPERTY_MESSAGE => $this->getMessage(),
         ];
     }
 }

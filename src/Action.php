@@ -5,7 +5,7 @@
  *
  * @link      https://github.com/re-message/message
  * @link      https://dev.remessage.ru/packages/message
- * @copyright Copyright (c) 2018-2022 Re Message
+ * @copyright Copyright (c) 2018-2023 Re Message
  * @author    Oleg Kozlov <h1karo@remessage.ru>
  * @license   Apache License 2.0
  * @license   https://legal.remessage.ru/licenses/message
@@ -101,11 +101,11 @@ readonly class Action implements ActionInterface
     final public function toArray(): array
     {
         $array = [
-            'id' => $this->getId(),
-            'type' => $this->getType()->value,
-            'name' => $this->getName(),
-            'parameters' => $this->parameters->toArray(),
-            'token' => $this->getToken(),
+            self::PROPERTY_ID => $this->getId(),
+            self::PROPERTY_TYPE => $this->getType()->toString(),
+            self::PROPERTY_NAME => $this->getName(),
+            self::PROPERTY_PARAMETERS => $this->parameters->toArray(),
+            self::PROPERTY_TOKEN => $this->getToken(),
         ];
 
         $notNull = static fn (mixed $value) => null !== $value;

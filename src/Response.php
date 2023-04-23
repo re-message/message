@@ -5,7 +5,7 @@
  *
  * @link      https://github.com/re-message/message
  * @link      https://dev.remessage.ru/packages/message
- * @copyright Copyright (c) 2018-2022 Re Message
+ * @copyright Copyright (c) 2018-2023 Re Message
  * @author    Oleg Kozlov <h1karo@remessage.ru>
  * @license   Apache License 2.0
  * @license   https://legal.remessage.ru/licenses/message
@@ -23,6 +23,8 @@ namespace RM\Standard\Message;
  */
 readonly class Response implements IdentifiableMessageInterface
 {
+    public const PROPERTY_CONTENT = 'content';
+
     public function __construct(
         private array $content,
         private string|null $id = null
@@ -56,9 +58,9 @@ readonly class Response implements IdentifiableMessageInterface
     public function toArray(): array
     {
         $array = [
-            'id' => $this->getId(),
-            'type' => $this->getType()->value,
-            'content' => $this->getContent(),
+            self::PROPERTY_ID => $this->getId(),
+            self::PROPERTY_TYPE => $this->getType()->toString(),
+            self::PROPERTY_CONTENT => $this->getContent(),
         ];
 
         $notNull = static fn (mixed $value) => null !== $value;

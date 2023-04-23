@@ -74,6 +74,11 @@ enum MessageType: string implements JsonSerializable
      */
     case COMMENT = 'comment';
 
+    public function toString(): string
+    {
+        return $this->value;
+    }
+
     public function jsonSerialize(): string
     {
         return $this->value;

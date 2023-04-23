@@ -5,7 +5,7 @@
  *
  * @link      https://github.com/re-message/message
  * @link      https://dev.remessage.ru/packages/message
- * @copyright Copyright (c) 2018-2022 Re Message
+ * @copyright Copyright (c) 2018-2023 Re Message
  * @author    Oleg Kozlov <h1karo@remessage.ru>
  * @license   Apache License 2.0
  * @license   https://legal.remessage.ru/licenses/message
@@ -21,6 +21,8 @@ namespace RM\Standard\Message;
  */
 interface IdentifiableMessageInterface extends MessageInterface
 {
+    public const PROPERTY_ID = 'id';
+
     /**
      * Returns the unique identifier of message or null.
      */

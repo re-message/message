@@ -52,11 +52,11 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     {
         try {
             $array = $this->convertToArray($message);
-            if (!array_key_exists('type', $array)) {
+            if (!array_key_exists(MessageInterface::PROPERTY_TYPE, $array)) {
                 return false;
             }
 
-            $type = MessageType::tryFrom($array['type']);
+            $type = MessageType::tryFrom($array[MessageInterface::PROPERTY_TYPE]);
             if (null === $type) {
                 return false;
             }

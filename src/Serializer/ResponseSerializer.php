@@ -18,6 +18,7 @@ namespace RM\Standard\Message\Serializer;
 
 use RM\Standard\Message\Exception\FormatterException;
 use RM\Standard\Message\Exception\SerializerException;
+use RM\Standard\Message\IdentifiableMessageInterface;
 use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 use RM\Standard\Message\Response;
@@ -43,8 +44,8 @@ class ResponseSerializer extends AbstractMessageSerializer
 
         $array = $this->formatter->decode($message);
 
-        $content = $array['content'];
-        $id = $array['id'] ?? null;
+        $content = $array[Response::PROPERTY_CONTENT];
+        $id = $array[IdentifiableMessageInterface::PROPERTY_ID] ?? null;
 
         return new Response($content, $id);
     }
@@ -62,6 +63,6 @@ class ResponseSerializer extends AbstractMessageSerializer
      */
     protected function getRequiredProperties(): array
     {
-        return ['content'];
+        return [Response::PROPERTY_CONTENT];
     }
 }

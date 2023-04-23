@@ -21,11 +21,11 @@ namespace RM\Standard\Message;
  *
  * @see MessageType::RESPONSE
  */
-class Response implements IdentifiableMessageInterface
+readonly class Response implements IdentifiableMessageInterface
 {
     public function __construct(
-        private readonly array $content,
-        private readonly string|null $id = null
+        private array $content,
+        private string|null $id = null
     ) {
     }
 

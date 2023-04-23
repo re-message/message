@@ -26,15 +26,15 @@ use Doctrine\Common\Collections\Collection;
  *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
-class Action implements ActionInterface
+readonly class Action implements ActionInterface
 {
-    private readonly Collection $parameters;
+    private Collection $parameters;
 
     public function __construct(
-        private readonly string $name,
+        private string $name,
         array $parameters = [],
-        private readonly string|null $id = null,
-        private readonly string|null $token = null
+        private string|null $id = null,
+        private string|null $token = null
     ) {
         $this->parameters = new ArrayCollection($parameters);
     }

@@ -16,6 +16,7 @@
 
 namespace RM\Standard\Message\Serializer;
 
+use Override;
 use RM\Standard\Message\Exception\FormatterException;
 use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\Format\JsonMessageFormatter;
@@ -40,6 +41,7 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
      *
      * @throws FormatterException
      */
+    #[Override]
     public function serialize(MessageInterface $message): string
     {
         return $this->formatter->encode($message->toArray());
@@ -48,6 +50,7 @@ abstract class AbstractMessageSerializer implements MessageSerializerInterface
     /**
      * @inheritDoc
      */
+    #[Override]
     public function supports(MessageInterface|string $message): bool
     {
         try {

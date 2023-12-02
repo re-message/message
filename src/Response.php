@@ -16,6 +16,8 @@
 
 namespace RM\Standard\Message;
 
+use Override;
+
 /**
  * @author Oleg Kozlov <h1karo@remessage.ru>
  *
@@ -31,17 +33,13 @@ readonly class Response implements IdentifiableMessageInterface
     ) {
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function getType(): MessageType
     {
         return MessageType::RESPONSE;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function getId(): string|null
     {
         return $this->id;
@@ -52,9 +50,7 @@ readonly class Response implements IdentifiableMessageInterface
         return $this->content;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function toArray(): array
     {
         $array = [

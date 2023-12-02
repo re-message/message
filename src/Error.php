@@ -16,6 +16,8 @@
 
 namespace RM\Standard\Message;
 
+use Override;
+
 /**
  * @see MessageType::ERROR
  *
@@ -35,9 +37,7 @@ class Error implements MessageInterface
         $this->message = $message;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function getType(): MessageType
     {
         return MessageType::ERROR;
@@ -53,9 +53,7 @@ class Error implements MessageInterface
         return $this->message;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     final public function toArray(): array
     {
         return [

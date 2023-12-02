@@ -16,6 +16,7 @@
 
 namespace RM\Standard\Message\Serializer;
 
+use Override;
 use RM\Standard\Message\Error;
 use RM\Standard\Message\Exception\FormatterException;
 use RM\Standard\Message\Exception\SerializerException;
@@ -35,6 +36,7 @@ class ErrorSerializer extends AbstractMessageSerializer
      * @throws FormatterException
      * @throws SerializerException
      */
+    #[Override]
     public function deserialize(string $message): MessageInterface
     {
         if (!$this->supports($message)) {
@@ -52,6 +54,7 @@ class ErrorSerializer extends AbstractMessageSerializer
     /**
      * @inheritDoc
      */
+    #[Override]
     protected function getSupportTypes(): array
     {
         return [MessageType::ERROR];
@@ -60,6 +63,7 @@ class ErrorSerializer extends AbstractMessageSerializer
     /**
      * @inheritDoc
      */
+    #[Override]
     protected function getRequiredProperties(): array
     {
         return [Error::PROPERTY_CODE, Error::PROPERTY_MESSAGE];

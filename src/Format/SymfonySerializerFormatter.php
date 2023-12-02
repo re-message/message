@@ -16,6 +16,7 @@
 
 namespace RM\Standard\Message\Format;
 
+use Override;
 use RM\Standard\Message\Exception\FormatterException;
 use Symfony\Component\Serializer\Encoder\DecoderInterface;
 use Symfony\Component\Serializer\Encoder\EncoderInterface;
@@ -29,6 +30,7 @@ class SymfonySerializerFormatter implements MessageFormatterInterface
     ) {
     }
 
+    #[Override]
     public function encode(array $message): string
     {
         try {
@@ -38,6 +40,7 @@ class SymfonySerializerFormatter implements MessageFormatterInterface
         }
     }
 
+    #[Override]
     public function decode(string $message): array
     {
         try {

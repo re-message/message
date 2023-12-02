@@ -16,6 +16,7 @@
 
 namespace RM\Standard\Message\Serializer;
 
+use Override;
 use RM\Standard\Message\Action;
 use RM\Standard\Message\ActionInterface;
 use RM\Standard\Message\Exception\FormatterException;
@@ -40,6 +41,7 @@ class ActionSerializer extends AbstractMessageSerializer
      * @throws FormatterException
      * @throws SerializerException
      */
+    #[Override]
     public function deserialize(string $message): MessageInterface
     {
         if (!$this->supports($message)) {
@@ -59,6 +61,7 @@ class ActionSerializer extends AbstractMessageSerializer
     /**
      * @inheritDoc
      */
+    #[Override]
     protected function getSupportTypes(): array
     {
         return [MessageType::ACTION];
@@ -67,6 +70,7 @@ class ActionSerializer extends AbstractMessageSerializer
     /**
      * @inheritDoc
      */
+    #[Override]
     protected function getRequiredProperties(): array
     {
         return [ActionInterface::PROPERTY_NAME];

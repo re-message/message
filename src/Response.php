@@ -19,6 +19,8 @@ namespace RM\Standard\Message;
 use Override;
 
 /**
+ * @readonly
+ *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  *
  * @see MessageType::RESPONSE

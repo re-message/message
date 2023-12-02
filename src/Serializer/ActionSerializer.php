@@ -27,6 +27,8 @@ use RM\Standard\Message\MessageType;
 use RM\Standard\Message\TokenizedMessageInterface;
 
 /**
+ * @readonly
+ *
  * @see MessageType::ACTION
  *
  * @author Oleg Kozlov <h1karo@remessage.ru>

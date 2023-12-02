@@ -21,6 +21,8 @@ use Symfony\Component\Serializer\Encoder\EncoderInterface;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 /**
+ * @readonly
+ *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
 class JsonMessageFormatter extends SymfonySerializerFormatter

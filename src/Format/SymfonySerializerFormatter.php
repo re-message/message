@@ -22,6 +22,11 @@ use Symfony\Component\Serializer\Encoder\DecoderInterface;
 use Symfony\Component\Serializer\Encoder\EncoderInterface;
 use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 
+/**
+ * @readonly
+ *
+ * @author Oleg Kozlov <h1karo@remessage.ru>
+ */
 class SymfonySerializerFormatter implements MessageFormatterInterface
 {
     public function __construct(

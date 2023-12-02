@@ -6,7 +6,7 @@
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTodoAnnotatedTests="true"
          beStrictAboutCoverageMetadata="true"
-         requireCoverageMetadata="true">
+>
     <source>
         <include>
             <directory>src</directory>

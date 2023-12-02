@@ -28,13 +28,10 @@ class Error implements MessageInterface
     public const PROPERTY_CODE = 'code';
     public const PROPERTY_MESSAGE = 'message';
 
-    private int $code;
-    private string $message;
-
-    public function __construct(int $code, string $message)
-    {
-        $this->code = $code;
-        $this->message = $message;
+    public function __construct(
+        private readonly int $code,
+        private readonly string $message,
+    ) {
     }
 
     #[Override]

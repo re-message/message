@@ -35,7 +35,7 @@
         "phpunit/phpunit": "^10.1.2",
 
         "friendsofphp/php-cs-fixer": "^3.16",
-        "remessage/ruleset": "^1.2.0"
+        "remessage/ruleset": "^1.2.3"
     },
     "scripts": {
         "test": "phpunit",

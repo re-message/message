@@ -35,8 +35,7 @@ readonly class Response implements IdentifiableMessageInterface
     public function __construct(
         private array $content,
         private string|null $id = null
-    ) {
-    }
+    ) {}
 
     #[Override]
     public function getType(): MessageType

@@ -39,8 +39,7 @@ class Error implements MessageInterface
     public function __construct(
         private readonly int $code,
         private readonly string $message,
-    ) {
-    }
+    ) {}
 
     #[Override]
     public function getType(): MessageType

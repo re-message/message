@@ -19,6 +19,4 @@ namespace RM\Standard\Message\Exception;
 /**
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
-class SerializerException extends Exception
-{
-}
+class SerializerException extends Exception {}

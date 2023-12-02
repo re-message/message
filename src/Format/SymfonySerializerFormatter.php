@@ -30,10 +30,9 @@ use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 class SymfonySerializerFormatter implements MessageFormatterInterface
 {
     public function __construct(
-        private readonly EncoderInterface&DecoderInterface $encoder,
+        private readonly DecoderInterface&EncoderInterface $encoder,
         private readonly string $format,
-    ) {
-    }
+    ) {}
 
     #[Override]
     public function encode(array $message): string

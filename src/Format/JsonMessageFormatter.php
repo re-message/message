@@ -27,7 +27,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
  */
 class JsonMessageFormatter extends SymfonySerializerFormatter
 {
-    public function __construct(EncoderInterface&DecoderInterface $encoder = new JsonEncoder())
+    public function __construct(DecoderInterface&EncoderInterface $encoder = new JsonEncoder())
     {
         parent::__construct($encoder, JsonEncoder::FORMAT);
     }

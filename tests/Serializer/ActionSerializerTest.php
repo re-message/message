@@ -20,18 +20,32 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestDox;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use RM\Standard\Message\Action;
 use RM\Standard\Message\Error;
+use RM\Standard\Message\Exception\Exception;
 use RM\Standard\Message\Exception\SerializerException;
+use RM\Standard\Message\Format\JsonMessageFormatter;
+use RM\Standard\Message\Format\SymfonySerializerFormatter;
 use RM\Standard\Message\MessageInterface;
+use RM\Standard\Message\MessageType;
 use RM\Standard\Message\Response;
+use RM\Standard\Message\Serializer\AbstractMessageSerializer;
 use RM\Standard\Message\Serializer\ActionSerializer;
 
 /**
  * @internal
  */
 #[CoversClass(ActionSerializer::class)]
+#[UsesClass(Action::class)]
+#[UsesClass(Error::class)]
+#[UsesClass(Response::class)]
+#[UsesClass(JsonMessageFormatter::class)]
+#[UsesClass(SymfonySerializerFormatter::class)]
+#[UsesClass(AbstractMessageSerializer::class)]
+#[UsesClass(MessageType::class)]
+#[UsesClass(Exception::class)]
 class ActionSerializerTest extends TestCase
 {
     #[Test]

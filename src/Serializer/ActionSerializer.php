@@ -36,15 +36,11 @@ use RM\Standard\Message\TokenizedMessageInterface;
 class ActionSerializer extends AbstractMessageSerializer
 {
     /**
-     * @inheritDoc
-     *
-     * @return Action
-     *
      * @throws FormatterException
      * @throws SerializerException
      */
     #[Override]
-    public function deserialize(string $message): MessageInterface
+    public function deserialize(string $message): Action
     {
         if (!$this->supports($message)) {
             $this->throwException();

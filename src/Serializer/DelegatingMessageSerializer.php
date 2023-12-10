@@ -18,6 +18,7 @@ namespace RM\Standard\Message\Serializer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Override;
 use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\MessageInterface;
 
@@ -49,28 +50,24 @@ final readonly class DelegatingMessageSerializer implements MessageSerializerInt
     }
 
     /**
-     * @inheritDoc
-     *
      * @throws SerializerException
      */
+    #[Override]
     public function serialize(MessageInterface $message): string
     {
         return $this->getMessageSerializer($message)->serialize($message);
     }
 
     /**
-     * @inheritDoc
-     *
      * @throws SerializerException
      */
+    #[Override]
     public function deserialize(string $message): MessageInterface
     {
         return $this->getMessageSerializer($message)->deserialize($message);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function supports(MessageInterface|string $message): bool
     {
         try {

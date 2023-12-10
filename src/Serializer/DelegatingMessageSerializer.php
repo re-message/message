@@ -22,11 +22,9 @@ use RM\Standard\Message\Exception\SerializerException;
 use RM\Standard\Message\MessageInterface;
 
 /**
- * @readonly
- *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
-class DelegatingMessageSerializer implements MessageSerializerInterface
+final readonly class DelegatingMessageSerializer implements MessageSerializerInterface
 {
     /**
      * @var Collection<MessageSerializerInterface>

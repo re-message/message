@@ -24,13 +24,11 @@ use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 
 /**
- * @readonly
- *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  *
  * @see MessageType::ERROR
  */
-class ErrorSerializer extends AbstractMessageSerializer
+final readonly class ErrorSerializer extends AbstractMessageSerializer
 {
     /**
      * @inheritDoc

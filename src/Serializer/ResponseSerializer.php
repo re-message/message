@@ -25,13 +25,11 @@ use RM\Standard\Message\MessageType;
 use RM\Standard\Message\Response;
 
 /**
- * @readonly
- *
  * @see MessageType::RESPONSE
  *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
-class ResponseSerializer extends AbstractMessageSerializer
+final readonly class ResponseSerializer extends AbstractMessageSerializer
 {
     /**
      * @inheritDoc

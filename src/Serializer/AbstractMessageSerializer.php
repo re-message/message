@@ -25,11 +25,9 @@ use RM\Standard\Message\MessageInterface;
 use RM\Standard\Message\MessageType;
 
 /**
- * @readonly
- *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
-abstract class AbstractMessageSerializer implements MessageSerializerInterface
+abstract readonly class AbstractMessageSerializer implements MessageSerializerInterface
 {
     protected MessageFormatterInterface $formatter;
 

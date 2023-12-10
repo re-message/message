@@ -21,7 +21,7 @@ namespace RM\Standard\Message;
  */
 interface TokenizedMessageInterface extends MessageInterface
 {
-    public const PROPERTY_TOKEN = 'token';
+    final public const PROPERTY_TOKEN = 'token';
 
     /**
      * Returns the token to access the requested resource or null.

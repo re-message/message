@@ -25,10 +25,7 @@ use Override;
  */
 readonly class Response implements IdentifiableMessageInterface
 {
-    /**
-     * @final
-     */
-    public const PROPERTY_CONTENT = 'content';
+    final public const PROPERTY_CONTENT = 'content';
 
     public function __construct(
         private array $content,

@@ -34,7 +34,7 @@ readonly class Error implements MessageInterface
     ) {}
 
     #[Override]
-    public function getType(): MessageType
+    final public function getType(): MessageType
     {
         return MessageType::ERROR;
     }

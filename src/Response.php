@@ -33,7 +33,7 @@ readonly class Response implements IdentifiableMessageInterface
     ) {}
 
     #[Override]
-    public function getType(): MessageType
+    final public function getType(): MessageType
     {
         return MessageType::RESPONSE;
     }
@@ -50,7 +50,7 @@ readonly class Response implements IdentifiableMessageInterface
     }
 
     #[Override]
-    public function toArray(): array
+    final public function toArray(): array
     {
         $array = [
             self::PROPERTY_ID => $this->getId(),

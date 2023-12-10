@@ -18,6 +18,7 @@ namespace RM\Standard\Message;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Override;
 
 /**
  * Class Action is a read-only representation of Action message.
@@ -39,65 +40,49 @@ readonly class Action implements ActionInterface
         $this->parameters = new ArrayCollection($parameters);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     final public function getType(): MessageType
     {
         return MessageType::ACTION;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function getId(): string|null
     {
         return $this->id;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function hasParameter(string $name): bool
     {
         return $this->parameters->containsKey($name);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function getValue(string $name): mixed
     {
         return $this->parameters->get($name);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function hasValue(string $name): bool
     {
         return $this->parameters->containsKey($name);
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     public function getToken(): string|null
     {
         return $this->token;
     }
 
-    /**
-     * @inheritDoc
-     */
+    #[Override]
     final public function toArray(): array
     {
         $array = [

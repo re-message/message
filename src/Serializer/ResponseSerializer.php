@@ -32,8 +32,6 @@ use RM\Standard\Message\Response;
 final readonly class ResponseSerializer extends AbstractMessageSerializer
 {
     /**
-     * @inheritDoc
-     *
      * @throws FormatterException
      * @throws SerializerException
      */
@@ -52,18 +50,12 @@ final readonly class ResponseSerializer extends AbstractMessageSerializer
         return new Response($content, $id);
     }
 
-    /**
-     * @inheritDoc
-     */
     #[Override]
     protected function getSupportTypes(): array
     {
         return [MessageType::RESPONSE];
     }
 
-    /**
-     * @inheritDoc
-     */
     #[Override]
     protected function getRequiredProperties(): array
     {

@@ -37,8 +37,6 @@ abstract readonly class AbstractMessageSerializer implements MessageSerializerIn
     }
 
     /**
-     * @inheritDoc
-     *
      * @throws FormatterException
      */
     #[Override]
@@ -47,9 +45,6 @@ abstract readonly class AbstractMessageSerializer implements MessageSerializerIn
         return $this->formatter->encode($message->toArray());
     }
 
-    /**
-     * @inheritDoc
-     */
     #[Override]
     public function supports(MessageInterface|string $message): bool
     {

@@ -53,18 +53,12 @@ final readonly class ActionSerializer extends AbstractMessageSerializer
         return new Action($name, $parameters, $id, $token);
     }
 
-    /**
-     * @inheritDoc
-     */
     #[Override]
     protected function getSupportTypes(): array
     {
         return [MessageType::ACTION];
     }
 
-    /**
-     * @inheritDoc
-     */
     #[Override]
     protected function getRequiredProperties(): array
     {

@@ -31,8 +31,6 @@ use RM\Standard\Message\MessageType;
 final readonly class ErrorSerializer extends AbstractMessageSerializer
 {
     /**
-     * @inheritDoc
-     *
      * @throws FormatterException
      * @throws SerializerException
      */
@@ -51,18 +49,12 @@ final readonly class ErrorSerializer extends AbstractMessageSerializer
         return new Error($errorCode, $errorMessage);
     }
 
-    /**
-     * @inheritDoc
-     */
     #[Override]
     protected function getSupportTypes(): array
     {
         return [MessageType::ERROR];
     }
 
-    /**
-     * @inheritDoc
-     */
     #[Override]
     protected function getRequiredProperties(): array
     {

@@ -19,13 +19,11 @@ namespace RM\Standard\Message;
 use Override;
 
 /**
- * @readonly
- *
  * @see MessageType::ERROR
  *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
-class Error implements MessageInterface
+readonly class Error implements MessageInterface
 {
     /**
      * @final
@@ -37,8 +35,8 @@ class Error implements MessageInterface
     public const PROPERTY_MESSAGE = 'message';
 
     public function __construct(
-        private readonly int $code,
-        private readonly string $message,
+        private int $code,
+        private string $message,
     ) {}
 
     #[Override]

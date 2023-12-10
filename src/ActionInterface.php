@@ -34,6 +34,13 @@ interface ActionInterface extends IdentifiableMessageInterface, TokenizedMessage
     public function getName(): string;
 
     /**
+     * Returns the parameters of the action.
+     *
+     * @return array<string, mixed>
+     */
+    public function getParameters(): array;
+
+    /**
      * Checks the existence of parameter by name.
      */
     public function hasParameter(string $name): bool;

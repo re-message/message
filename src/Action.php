@@ -59,6 +59,12 @@ readonly class Action implements ActionInterface
     }
 
     #[Override]
+    public function getParameters(): array
+    {
+        return $this->parameters->toArray();
+    }
+
+    #[Override]
     public function hasParameter(string $name): bool
     {
         return $this->parameters->containsKey($name);

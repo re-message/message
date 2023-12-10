@@ -30,7 +30,7 @@ final readonly class DelegatingMessageSerializer implements MessageSerializerInt
     /**
      * @var Collection<MessageSerializerInterface>
      */
-    protected Collection $serializers;
+    private Collection $serializers;
 
     /**
      * @param MessageSerializerInterface[] $serializers
@@ -80,7 +80,7 @@ final readonly class DelegatingMessageSerializer implements MessageSerializerInt
     /**
      * @throws SerializerException
      */
-    protected function getMessageSerializer(MessageInterface|string $message): MessageSerializerInterface
+    private function getMessageSerializer(MessageInterface|string $message): MessageSerializerInterface
     {
         foreach ($this->serializers as $serializer) {
             if ($serializer->supports($message)) {

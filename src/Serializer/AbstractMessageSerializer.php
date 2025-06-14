@@ -46,11 +46,11 @@ abstract readonly class AbstractMessageSerializer implements MessageSerializerIn
     {
         try {
             $array = $this->convertToArray($message);
-            if (!array_key_exists(MessageInterface::PROPERTY_TYPE, $array)) {
+            if (!array_key_exists(MessageType::PROPERTY, $array)) {
                 return false;
             }
 
-            $type = MessageType::tryFrom($array[MessageInterface::PROPERTY_TYPE]);
+            $type = MessageType::tryFrom($array[MessageType::PROPERTY]);
             if (null === $type) {
                 return false;
             }

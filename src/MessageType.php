@@ -22,6 +22,8 @@ use JsonSerializable;
  */
 enum MessageType: string implements JsonSerializable
 {
+    final public const string PROPERTY = 'type';
+
     /**
      * Main message type. Means the requirement to perform some action.
      * For example, get the user for the `users.get` action.

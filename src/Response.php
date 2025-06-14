@@ -24,11 +24,11 @@ use Override;
  */
 readonly class Response implements IdentifiableMessageInterface
 {
-    final public const PROPERTY_CONTENT = 'content';
+    final public const string PROPERTY_CONTENT = 'content';
 
     public function __construct(
         private array $content,
-        private string|null $id = null
+        private ?string $id = null,
     ) {}
 
     #[Override]
@@ -38,7 +38,7 @@ readonly class Response implements IdentifiableMessageInterface
     }
 
     #[Override]
-    public function getId(): string|null
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -57,7 +57,7 @@ readonly class Response implements IdentifiableMessageInterface
             self::PROPERTY_CONTENT => $this->getContent(),
         ];
 
-        $notNull = static fn (mixed $value) => null !== $value;
+        $notNull = static fn(mixed $value) => null !== $value;
 
         return array_filter($array, $notNull);
     }

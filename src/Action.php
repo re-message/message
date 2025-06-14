@@ -33,8 +33,8 @@ readonly class Action implements ActionInterface
     public function __construct(
         private string $name,
         array $parameters = [],
-        private string|null $id = null,
-        private string|null $token = null
+        private ?string $id = null,
+        private ?string $token = null
     ) {
         $this->parameters = new ArrayCollection($parameters);
     }
@@ -46,7 +46,7 @@ readonly class Action implements ActionInterface
     }
 
     #[Override]
-    public function getId(): string|null
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -82,7 +82,7 @@ readonly class Action implements ActionInterface
     }
 
     #[Override]
-    public function getToken(): string|null
+    public function getToken(): ?string
     {
         return $this->token;
     }
@@ -98,7 +98,7 @@ readonly class Action implements ActionInterface
             self::PROPERTY_TOKEN => $this->getToken(),
         ];
 
-        $notNull = static fn (mixed $value) => null !== $value;
+        $notNull = static fn(mixed $value) => null !== $value;
 
         return array_filter($array, $notNull);
     }

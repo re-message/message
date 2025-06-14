@@ -20,10 +20,10 @@ namespace RM\Standard\Message;
  */
 interface TokenizedMessageInterface extends MessageInterface
 {
-    final public const PROPERTY_TOKEN = 'token';
+    final public const string PROPERTY_TOKEN = 'token';
 
     /**
      * Returns the token to access the requested resource or null.
      */
-    public function getToken(): string|null;
+    public function getToken(): ?string;
 }

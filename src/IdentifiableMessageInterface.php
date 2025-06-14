@@ -20,10 +20,10 @@ namespace RM\Standard\Message;
  */
 interface IdentifiableMessageInterface extends MessageInterface
 {
-    final public const PROPERTY_ID = 'id';
+    final public const string PROPERTY_ID = 'id';
 
     /**
      * Returns the unique identifier of message or null.
      */
-    public function getId(): string|null;
+    public function getId(): ?string;
 }

@@ -22,8 +22,8 @@ namespace RM\Standard\Message;
  */
 interface ActionInterface extends IdentifiableMessageInterface, TokenizedMessageInterface
 {
-    final public const PROPERTY_NAME = 'name';
-    final public const PROPERTY_PARAMETERS = 'parameters';
+    final public const string PROPERTY_NAME = 'name';
+    final public const string PROPERTY_PARAMETERS = 'parameters';
 
     /**
      * The unique name of action.

@@ -24,8 +24,8 @@ use Override;
  */
 readonly class Error implements MessageInterface
 {
-    final public const PROPERTY_CODE = 'code';
-    final public const PROPERTY_MESSAGE = 'message';
+    final public const string PROPERTY_CODE = 'code';
+    final public const string PROPERTY_MESSAGE = 'message';
 
     public function __construct(
         private int $code,

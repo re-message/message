@@ -28,12 +28,9 @@ use RM\Standard\Message\MessageType;
  */
 abstract readonly class AbstractMessageSerializer implements MessageSerializerInterface
 {
-    protected MessageFormatterInterface $formatter;
-
-    public function __construct(MessageFormatterInterface $formatter = null)
-    {
-        $this->formatter = $formatter ?? new JsonMessageFormatter();
-    }
+    public function __construct(
+        protected MessageFormatterInterface $formatter = new JsonMessageFormatter(),
+    ) {}
 
     /**
      * @throws FormatterException

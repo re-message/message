@@ -20,7 +20,7 @@ namespace RM\Standard\Message;
  */
 interface MessageInterface
 {
-    final public const PROPERTY_TYPE = 'type';
+    final public const string PROPERTY_TYPE = 'type';
 
     /**
      * Type of the message.

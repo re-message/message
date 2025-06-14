@@ -22,15 +22,13 @@ use Symfony\Component\Serializer\Encoder\EncoderInterface;
 use Symfony\Component\Serializer\Exception\UnexpectedValueException;
 
 /**
- * @readonly
- *
  * @author Oleg Kozlov <h1karo@remessage.ru>
  */
-class SymfonySerializerFormatter implements MessageFormatterInterface
+readonly class SymfonySerializerFormatter implements MessageFormatterInterface
 {
     public function __construct(
-        private readonly DecoderInterface&EncoderInterface $encoder,
-        private readonly string $format,
+        private DecoderInterface&EncoderInterface $encoder,
+        private string $format,
     ) {}
 
     #[Override]

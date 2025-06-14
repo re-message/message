@@ -15,6 +15,7 @@
  */
 
 use PhpCsFixer\Finder;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 use RM\Style\RuleSet\Config;
 use RM\Style\RuleSet\Header;
 
@@ -34,4 +35,5 @@ $header = new Header()
 return new Config()
     ->setHeader($header)
     ->setFinder($finder)
+    ->setParallelConfig(ParallelConfigFactory::detect())
 ;
